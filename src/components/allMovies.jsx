@@ -8,12 +8,14 @@ import pic4 from '../images/test/4.jpg'
 import pic5 from '../images/test/5.jpg'
 
 class AllMovies extends Component {
+
+    //request get to api to get all movies then put them in state
     state = {
         movies: [pic1, pic2, pic3, pic4, pic5, pic1, pic2, pic3, pic4, pic5],
     }
-
     picClick = () => {
         window.location = '/moviePage'
+        // window.location = `/allMovie/${id}`
     }
 
     goBack = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Schedule = (props) => {
 
     const getCalendar = () => {
@@ -22,7 +21,6 @@ const Schedule = (props) => {
         }));
         return convertedDates;
     };
-
 
     return (
         <div className='schedule'>

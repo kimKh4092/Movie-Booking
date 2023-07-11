@@ -32,6 +32,8 @@ function Intro() {
                         <button className='explore' onClick={handleClick1} >
                             <Link to='/explore' className='exploreLink'>Explore</Link></button>
                         <button className='join'>
+
+                            {/* sign up or sign in route */}
                             <Link to='/' className='joinLink'>Join</Link></button>
                     </div>
                 </div>

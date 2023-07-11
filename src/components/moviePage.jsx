@@ -4,9 +4,13 @@ import '../styles/movie.css'
 import star from '../images/star.png';
 import circle from '../images/circle.png';
 
+
 import pic4 from '../images/test/4.jpg'
 
 class MoviePage extends Component {
+
+    //extract movie id from route parameters 
+    //get movie info from services
     state = {}
 
     goBack = () => {

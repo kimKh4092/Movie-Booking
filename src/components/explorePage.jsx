@@ -8,6 +8,14 @@ import { Link } from 'react-router-dom';
 
 const Explore = () => {
 
+    //get request for topmovies 
+    //need state
+    //pass them to topmovies component
+
+    //get request for movies of the date 
+    //need state
+    //pass them to movies
+
     const [date, setDate] = useState({});
     const [dateIndex, setIndex] = useState();
 
@@ -39,7 +47,6 @@ const Explore = () => {
         setDate(converted)
     }
 
-
     const addClicked = (index) => {
         let button = document.getElementById(index);
         let day1Text = document.getElementById(`${index}day1`);
@@ -68,8 +75,8 @@ const Explore = () => {
         getToday();
         addClicked(0);
         //get request to get the movies of today
+        //get request to get topmovies
     }, []);
-
 
     const buttonClicked = (day, index) => {
         setDate(day);
@@ -78,19 +85,28 @@ const Explore = () => {
         //get request to get movies of the day
     }
 
+
+    const picClick = () => {
+        window.location = '/moviePage'
+        // window.location = `/allMovie/${id}`
+    }
+
     return (
         <>
             <nav>
                 <li className='nav'>
                     <ul className='navItem1'>Phantom Screen</ul>
                     <ul className='navItem2'>
+                        {/* sign up or sign in route */}
                         <Link to='/' className='joinLink'>Join us</Link></ul>
                 </li>
             </nav>
-            <TopMovies />
+
+            <TopMovies picClick={picClick} />
+
             <div className='main'>
                 <Schedule months={months} week={week} buttonClicked={buttonClicked} />
-                <Movies today={date} />
+                <Movies picClick={picClick} today={date} />
             </div>
         </>
     );
@@ -98,25 +114,3 @@ const Explore = () => {
 
 export default Explore;
 
-
-
-
-// class Explore extends Component {
-//     state = {}
-//     render() {
-//         return (
-//             <React.Fragment>
-//                 <nav>
-//                     <li className='nav'>
-//                         <ul className='navItem1'>Phantom Screen</ul>
-//                         <ul className='navItem2'>Join us</ul>
-//                     </li>
-//                 </nav>
-//                 <TopMovies />
-//             </React.Fragment>
-
-//         );
-//     }
-// }
-
-// export default Explore;
