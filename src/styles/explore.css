@@ -1,0 +1,235 @@
+body {
+    background: #0A100D;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    color: #D6D5C9;
+    justify-content: space-between;
+}
+
+.navItem1 {
+    margin: 20px;
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+
+
+.navItem2 {
+    margin: 20px;
+    color: #A22C29;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.joinLink {
+    color: #A22C29;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.topMovies {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.pic {
+    width: 300px;
+    margin: 40px;
+    margin-bottom: 0px;
+    border: 4px solid #FFF;
+    cursor: pointer;
+}
+
+.pic:hover {
+    border: 4px solid #A22C29;
+
+}
+
+.head2 {
+    margin-left: 200px;
+    margin-bottom: -20px;
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.white {
+    color: #D6D5C9;
+    cursor: pointer;
+    margin-top: 250px;
+}
+
+.white:hover {
+    color: #A22C29;
+}
+
+.head3 {
+    margin-right: 230px;
+    text-align: end;
+}
+
+.link3 {
+    text-decoration: none;
+    color: #A22C29;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.calendar {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.calendarBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 220px;
+    height: 100px;
+    border: 6px solid #FFF;
+    background: #B9BAA3;
+    margin-left: 80px;
+    cursor: pointer;
+}
+
+.calendarBox:hover {
+    border: 6px solid #A22C29;
+}
+
+.date {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2.3rem;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: normal;
+    margin: 20px;
+    width: 15%;
+}
+
+.day {
+    text-align: left;
+    color: #0A100D;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 5px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.moviesGrid {
+    margin: 80px;
+    width: 800px;
+}
+
+.moviePic {
+    width: 150px;
+    margin: 20px;
+    margin-bottom: 0px;
+    border: 4px solid #FFF;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.moviePic:hover {
+    border: 4px solid #A22C29;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    opacity: 1;
+}
+
+.titleDate {
+    color: #A22C29;
+    font-family: Inter;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.clicked {
+    border: 6px solid #902923;
+    background: #0A100D;
+}
+
+.clickedDate {
+    color: #A22C29;
+
+}
+
+.clickedDay {
+    color: #D6D5C9;
+}
+
+.dateTitle {
+    color: #A22C29;
+    font-family: Inter;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.allMovies {
+    margin: 150px;
+    margin-top: 50px;
+}
+
+.eachPic {
+    width: 250px;
+    margin: 20px;
+    margin-bottom: 0px;
+    border: 4px solid #FFF;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.eachPic:hover {
+    border: 6px solid #902923;
+    opacity: 1;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.allHead {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 100px;
+    margin-left: 170px;
+}
