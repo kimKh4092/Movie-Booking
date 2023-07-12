@@ -49,7 +49,7 @@ body {
 .exploreLink {
     color: #D6D5C9;
     font-family: Inter;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -89,7 +89,6 @@ body {
 
 }
 
-
 .introContent1 {
     width: 100vw;
     height: 100vh;
@@ -98,14 +97,13 @@ body {
 }
 
 .introPic1 {
-    width: 1500;
     height: 100vh;
     position: fixed;
 
 }
 
 .introPic2 {
-    width: 1500;
+    width: auto;
     height: 100vh;
     position: fixed;
     animation: pic1 3s linear;
@@ -139,5 +137,230 @@ body {
 
     to {
         opacity: 0;
+    }
+}
+
+@media screen and (max-width: 1420px) {
+
+    .introPic2 {
+        margin-left: -50px;
+    }
+
+    .introPic1 {
+        display: -50px;
+    }
+
+    .introContent2 {
+        width: 50vw;
+    }
+
+    .introText {
+        font-size: 1.9rem;
+    }
+
+    .joinLink {
+        font-size: 1.5rem;
+    }
+
+    .exploreLink {
+        font-size: 1.4rem;
+    }
+
+    .title {
+        font-size: 1.9rem;
+    }
+
+}
+
+@media screen and (max-width: 1290px) {
+
+    .introPic2 {
+        margin-left: -150px;
+    }
+
+    .introPic1 {
+        display: -100px;
+    }
+
+    .introContent2 {
+        width: 50vw;
+    }
+
+    .introText {
+        font-size: 1.8rem;
+        width: 50%;
+    }
+
+    .buttons {
+        margin-top: 60px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .introPic2 {
+        display: none;
+    }
+
+    .intro {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .introContent2 {
+        width: 100vw;
+        height: 40vh;
+        border-top: 4px solid #FFF;
+        border-left: none;
+
+    }
+
+    .introText {
+        margin-top: 50px;
+        margin-left: 50px;
+        font-size: 1.6rem;
+        width: 60%;
+    }
+
+    .buttons {
+        margin-top: 0px;
+    }
+
+    .join {
+        width: 130px;
+        height: 40px;
+        border: 3px solid #FFF;
+
+    }
+
+    .joinLink {
+        font-size: 1.3rem;
+    }
+
+    .explore {
+        width: 130px;
+        height: 40px;
+        border: 3px solid #FFF;
+    }
+
+    .exploreLink {
+        font-size: 1.3rem;
+    }
+}
+
+
+
+@media screen and (max-width: 990px) {
+    .introPic1 {
+        height: 90vh;
+    }
+
+    .introContent2 {
+        height: 37vh;
+    }
+
+    .introText {
+        margin-top: 40px;
+        margin-left: 50px;
+        font-size: 1.5rem;
+        width: 60%;
+    }
+
+    .join {
+        width: 120px;
+        height: 40px;
+        border: 3px solid #FFF;
+
+    }
+
+    .joinLink {
+        font-size: 1.3rem;
+    }
+
+    .explore {
+        width: 120px;
+        height: 40px;
+        border: 3px solid #FFF;
+    }
+
+    .exploreLink {
+        font-size: 1.2rem;
+    }
+
+}
+
+
+@media screen and (max-width: 870px) {
+    .introPic1 {
+        height: 80vh;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .introPic1 {
+        margin-left: -50px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .introText {
+        font-size: 1.3rem;
+        width: 70%;
+    }
+
+    .join {
+        width: 120px;
+        height: 40px;
+        border: 3px solid #FFF;
+
+    }
+
+    .joinLink {
+        font-size: 1.3rem;
+    }
+
+    .explore {
+        width: 120px;
+        height: 40px;
+        border: 3px solid #FFF;
+    }
+
+    .exploreLink {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .introPic1 {
+        margin-left: -80px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .introPic1 {
+        display: none;
+    }
+
+    .introPic2 {
+        display: flex;
+        height: 500px;
+    }
+
+    .introText {
+        width: 90%;
+        margin-left: 0px;
     }
 }

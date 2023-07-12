@@ -1,8 +1,11 @@
-import axios from "axios";
+// import axios from "axios";
 
-export default {
-    get: axios.get,
-    post: axios.post,
-    put: axios.put,
-    delete: axios.delete
-}
+// export default {
+//     get: axios.get,
+//     post: axios.post,
+//     put: axios.put,
+//     delete: axios.delete
+// }
+
+
+//use pocket base js

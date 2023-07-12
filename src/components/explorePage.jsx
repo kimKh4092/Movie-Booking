@@ -98,7 +98,7 @@ const Explore = () => {
                     <ul className='navItem1'>Phantom Screen</ul>
                     <ul className='navItem2'>
                         {/* sign up or sign in route */}
-                        <Link to='/' className='joinLink'>Join us</Link></ul>
+                        <Link to='/' className='joinUs'>Join us</Link></ul>
                 </li>
             </nav>
 

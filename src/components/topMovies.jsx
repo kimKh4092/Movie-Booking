@@ -14,7 +14,6 @@ const TopMovies = (props) => {
     const topMovies = [pic1, pic2, pic3, pic4, pic5];
     const [startIndex, setStartIndex] = useState(0);
 
-
     const showTop = () => {
         const shown = topMovies.slice(startIndex, startIndex + 3);
         if (startIndex > 2) {
@@ -49,7 +48,7 @@ const TopMovies = (props) => {
                 <i onClick={goToNextSlide} className="fa fa-arrow-circle-left white fa-4x" aria-hidden="true"></i>
 
                 {showTop().map((movie, index) => (
-                    <img onClick={props.picClick} src={movie} className='pic' key={index} />
+                    <img onClick={props.picClick} src={movie} className='pic smooth' key={index} />
                 ))}
 
                 <i onClick={goToPreviousSlide} className="fa fa-arrow-circle-right white fa-4x" aria-hidden="true"></i>

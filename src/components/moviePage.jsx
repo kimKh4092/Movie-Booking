@@ -24,7 +24,7 @@ class MoviePage extends Component {
                     <li className='nav'>
                         <ul className='navItem1' onClick={this.goBack}>Phantom Screen</ul>
                         <ul className='navItem2'>
-                            <Link to='/' className='joinLink'>Join us</Link></ul>
+                            <Link to='/' className='joinUs'>Join us</Link></ul>
                     </li>
                 </nav>
 

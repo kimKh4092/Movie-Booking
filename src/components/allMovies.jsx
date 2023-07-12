@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
+//for test
 import pic1 from '../images/test/1.jpg'
 import pic2 from '../images/test/2.jpg'
 import pic3 from '../images/test/3.jpg'
@@ -29,13 +31,21 @@ class AllMovies extends Component {
                     <li className='nav'>
                         <ul className='navItem1' onClick={this.goBack}>Phantom Screen</ul>
                         <ul className='navItem2'>
-                            <Link to='/' className='joinLink'>Join us</Link></ul>
+                            <Link to='/'
+                                className='joinLink'>Join us</Link></ul>
                     </li>
                 </nav>
                 <h1 className='allHead'>Currenty Showing In The Phantom <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Cinema</span></h1>
                 <div className='allMovies'>
                     {this.state.movies.map((movie, index) =>
-                        <img onClick={this.picClick} src={movie} className='eachPic' key={index} />
+
+                        <div className='movieContain'>
+                            <img onClick={this.picClick}
+                                src={movie}
+                                className='eachPic'
+                                key={index} />
+                            {/* <p className='overlayTitle'>Decision to leave</p> */}
+                        </div>
                     )}
                 </div>
             </React.Fragment>
