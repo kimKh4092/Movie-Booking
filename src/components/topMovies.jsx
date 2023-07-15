@@ -53,6 +53,14 @@ const TopMovies = (props) => {
 
                 <i onClick={goToPreviousSlide} className="fa fa-arrow-circle-right white fa-4x" aria-hidden="true"></i>
             </div>
+
+            <div className='mobile'>
+                {showTop().map((movie, index) => (
+                    <img onClick={props.picClick} src={movie} className='pic smooth' key={index} />
+                ))}
+
+            </div>
+
             <h3 className='head3'>
                 <Link to='/allMovies' className='link3'>All movies</Link>
             </h3>

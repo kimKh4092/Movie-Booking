@@ -28,7 +28,7 @@ const Schedule = (props) => {
                 {convertDate().map((day, index) =>
                     <button id={index} key={index} onClick={() => props.buttonClicked(day, index)} className='calendarBox '>
                         <p id={`${index}date`} className='date'>{day.day}</p>
-                        <div>
+                        <div className='days'>
                             <p id={`${index}day1`} className='day '>{day.month}</p>
                             <p id={`${index}day2`} className='day '>{day.weekDay}</p>
                         </div>

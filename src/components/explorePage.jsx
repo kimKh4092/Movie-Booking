@@ -4,6 +4,7 @@ import '../styles/explore.css'
 import TopMovies from './topMovies';
 import Schedule from './schedule';
 import { Link } from 'react-router-dom';
+import { addClicked1, removeClicked1 } from '../utils/manageClass';
 
 
 const Explore = () => {
@@ -17,7 +18,7 @@ const Explore = () => {
     //pass them to movies
 
     const [date, setDate] = useState({});
-    const [dateIndex, setIndex] = useState();
+    const [dateIndex, setIndex] = useState(0);
 
     const months = [
         'January',
@@ -47,42 +48,18 @@ const Explore = () => {
         setDate(converted)
     }
 
-    const addClicked = (index) => {
-        let button = document.getElementById(index);
-        let day1Text = document.getElementById(`${index}day1`);
-        let day2Text = document.getElementById(`${index}day2`);
-        let dateText = document.getElementById(`${index}date`);
-        button.classList.add("clicked");
-        dateText.classList.add('clickedDate');
-        day1Text.classList.add("clickedDay");
-        day2Text.classList.add("clickedDay");
-        setIndex(index);
-    }
-
-    const removeClicked = (index) => {
-        let button = document.getElementById(index);
-        let day1Text = document.getElementById(`${index}day1`);
-        let day2Text = document.getElementById(`${index}day2`);
-        let dateText = document.getElementById(`${index}date`);
-        button.classList.remove("clicked");
-        dateText.classList.remove('clickedDate');
-        day1Text.classList.remove("clickedDay");
-        day2Text.classList.remove("clickedDay");
-
-    }
-
     useEffect(() => {
         getToday();
-        addClicked(0);
+        addClicked1(0);
         //get request to get the movies of today
         //get request to get topmovies
     }, []);
 
     const buttonClicked = (day, index) => {
         setDate(day);
-        removeClicked(dateIndex);
-        addClicked(index)
-        //get request to get movies of the day
+        removeClicked1(dateIndex);
+        addClicked1(index);
+        setIndex(index);
     }
 
 

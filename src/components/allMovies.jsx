@@ -32,7 +32,7 @@ class AllMovies extends Component {
                         <ul className='navItem1' onClick={this.goBack}>Phantom Screen</ul>
                         <ul className='navItem2'>
                             <Link to='/'
-                                className='joinLink'>Join us</Link></ul>
+                                className='joinUs'>Join us</Link></ul>
                     </li>
                 </nav>
                 <h1 className='allHead'>Currenty Showing In The Phantom <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Cinema</span></h1>

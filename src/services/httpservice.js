@@ -1,11 +1,6 @@
-// import axios from "axios";
 
-// export default {
-//     get: axios.get,
-//     post: axios.post,
-//     put: axios.put,
-//     delete: axios.delete
-// }
+import PocketBase from 'pocketbase';
+const pb = new PocketBase('https://pocketbase.io');
 
 
 //use pocket base js

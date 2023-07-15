@@ -11,6 +11,7 @@ body {
 
 .navItem1 {
     margin: 20px;
+    margin-left: 0px;
     color: #D6D5C9;
     font-family: Inter;
     font-size: 2rem;
@@ -23,6 +24,7 @@ body {
 
 .navItem2 {
     margin: 20px;
+    margin-right: 30px;
     color: #A22C29;
     font-family: Inter;
     font-size: 1.8rem;
@@ -39,6 +41,7 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    text-decoration: none;
 
 }
 
@@ -83,6 +86,7 @@ body {
 .head2 {
     margin-left: 200px;
     margin-bottom: -20px;
+
     color: #D6D5C9;
     font-family: Inter;
     font-size: 1.8rem;
@@ -116,10 +120,8 @@ body {
     line-height: normal;
 }
 
-
 .calendar {
-    margin-top: 100px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .calendarBox {
@@ -161,10 +163,15 @@ body {
     margin: 5px;
 }
 
+.mobile {
+    display: none;
+}
+
 .main {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .moviesGrid {
@@ -213,9 +220,10 @@ body {
 }
 
 .dateTitle {
+    margin-left: 20px;
     color: #A22C29;
     font-family: Inter;
-    font-size: 1.875rem;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -233,36 +241,6 @@ body {
 .movieContain {
     position: relative;
 }
-
-/* .overlayTitle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 120px;
-    margin-left: 100px;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
-    color: #D6D5C9;
-    font-family: Inter;
-    font-size: 2.3rem;
-    font-style: normal;
-    font-weight: 1000;
-    line-height: normal;
-
-    opacity: 0;
-    transition: opacity 0.3s;
-
-
-}
-
-.overlayTitle:hover {
-    opacity: 1;
-} */
 
 .eachPic {
     width: 250px;
@@ -291,4 +269,686 @@ body {
     line-height: normal;
     margin-top: 100px;
     margin-left: 170px;
+}
+
+
+@media screen and (max-width: 1400px) {
+    .pic {
+        width: 230px;
+    }
+
+    .navItem1 {
+        font-size: 1.9rem;
+    }
+
+    .joinUs {
+        font-size: 1.7rem;
+
+    }
+
+    .head2 {
+        font-size: 1.7rem;
+    }
+
+    .moviePic {
+        width: 140px;
+    }
+
+    .calendarBox {
+        width: 200px;
+        height: 90px;
+    }
+
+    .date {
+        font-size: 2.1rem;
+        margin: 15px;
+    }
+
+    .day {
+        font-size: 1.5rem;
+    }
+
+    .white {
+        margin-top: 190px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .pic {
+        width: 210px;
+        margin: 30px;
+        margin-bottom: 0px;
+    }
+
+    .navItem1 {
+        font-size: 1.8rem;
+    }
+
+    .head2 {
+        font-size: 1.6rem;
+        margin-bottom: 2px;
+    }
+
+    .joinUs {
+        font-size: 1.6rem;
+
+    }
+
+    .moviePic {
+        width: 130px;
+        margin: 15px;
+    }
+
+    .calendar {
+        margin-left: 50px;
+    }
+
+    .calendarBox {
+        width: 190px;
+        height: 90px;
+    }
+
+    .date {
+        font-size: 2rem;
+        margin: 13px;
+    }
+
+    .day {
+        font-size: 1.4rem;
+    }
+
+    .dateTitle {
+        font-size: 1.7rem;
+    }
+
+    .white {
+        margin-top: 170px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .pic {
+        width: 200px;
+        margin: 25px;
+        margin-bottom: 0px;
+    }
+
+    .head2 {
+        margin-bottom: 2px;
+    }
+
+    .moviePic {
+        width: 110px;
+        margin: 12px;
+    }
+
+    .moviesGrid {
+        width: 600px;
+    }
+
+    .calendar {
+        margin-left: 0px;
+        margin-bottom: 20px;
+    }
+
+    .calendarBox {
+        width: 180px;
+        height: 85px;
+    }
+
+    .date {
+        font-size: 1.9rem;
+        margin: 13px;
+    }
+
+    .day {
+        font-size: 1.35rem;
+    }
+
+    .head3 {
+        margin-right: 200px;
+    }
+
+    .white {
+        margin-top: 150px;
+    }
+
+}
+
+@media screen and (max-width: 1080px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .pic {
+        width: 190px;
+        margin: 20px;
+    }
+
+    .calendar {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .calendarBox {
+        margin: 0px;
+        margin-top: 60px;
+        width: 120px;
+        flex-direction: column;
+        align-items: start;
+
+    }
+
+    .date {
+        margin: 0px;
+
+    }
+
+    .days {
+
+        display: flex;
+        flex-direction: row;
+    }
+
+    .day {
+        font-size: 0.9rem;
+        margin: 0px;
+        margin-left: 2px;
+    }
+
+    .moviesGrid {
+        width: 900px;
+        margin-left: 120px;
+        margin-top: 0px;
+    }
+
+    .head3 {
+        margin-right: 150px;
+        margin-top: 0px;
+
+    }
+
+    .head2 {
+        margin-left: 120px;
+
+    }
+
+}
+
+@media screen and (max-width: 1020px) {
+    .navItem2 {
+        margin-right: 20px;
+    }
+
+    .pic {
+        width: 170px;
+        margin: 20px;
+    }
+
+    .calendarBox {
+        margin: 0px;
+        margin-top: 50px;
+        width: 100px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 4px solid #FFF;
+    }
+
+    .clicked {
+        border: 5px solid #902923;
+        background: #0A100D;
+    }
+
+    .date {
+        margin: 0px;
+        margin-right: 10px;
+    }
+
+    .day {
+        font-size: 0.8rem;
+    }
+
+    .moviesGrid {
+        width: 800px;
+        margin-left: 150px;
+        margin-top: 0px;
+    }
+
+    .white {
+        margin-top: 130px;
+    }
+
+}
+
+
+@media screen and (max-width: 900px) {
+    .pic {
+        width: 150px;
+        margin: 15px;
+    }
+
+    .white {
+        margin-top: 105px;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .calendarBox {
+        width: 95px;
+    }
+
+    .date {
+        margin: 0px;
+        margin-right: 15px;
+    }
+
+    .day {
+        font-size: 0.7rem;
+    }
+
+    .dateTitle {
+        font-size: 1.5rem;
+    }
+
+    .moviePic {
+        width: 100px;
+    }
+
+    .moviesGrid {
+        width: 700px;
+        margin-left: 100px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .calendarBox {
+        width: 75px;
+        align-items: start;
+    }
+
+    .day {
+        font-size: 0.7rem;
+    }
+
+    .date {
+        font-size: 1.6rem;
+        margin: 5px;
+
+    }
+
+    .days {
+        flex-direction: column;
+    }
+
+    .navItem1 {
+        font-size: 1.6rem;
+    }
+
+    .joinUs {
+        font-size: 1.4rem;
+    }
+
+    .head2 {
+        font-size: 1.5rem;
+    }
+
+    .link3 {
+        font-size: 1.5rem;
+    }
+
+    .moviesGrid {
+        width: 600px;
+    }
+
+    .pic {
+        width: 130px;
+    }
+
+    .white {
+        margin-top: 85px;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navItem1 {
+        margin: 0px;
+        margin-top: 20px;
+    }
+
+    .calendarBox {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #FFF;
+
+    }
+
+    .clicked {
+        border: 4px solid #902923;
+        background: #0A100D;
+    }
+
+    .day {
+        display: none;
+    }
+
+    .date {
+        font-size: 1.2rem;
+    }
+
+    .moviesGrid {
+        width: 300px;
+    }
+
+    .moviePic {
+        width: 90px;
+        margin: 20px;
+        margin-bottom: 0px;
+        border: 3px solid #FFF;
+
+    }
+
+    .moviePic:hover {
+        border: 3px solid #A22C29;
+        margin-bottom: 5px;
+        margin-top: 0px;
+        opacity: 1;
+    }
+
+    .topMovies {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .pic {
+        width: 90px;
+        border: 2px solid #FFF;
+        margin-top: 50px;
+    }
+
+    .dateTitle {
+        font-size: 1.2rem;
+    }
+
+    .head2 {
+        display: none;
+    }
+
+    .head3 {
+        text-align: start;
+        margin-left: 25%;
+    }
+
+    .link3 {
+        font-size: 1.3rem;
+    }
+
+    .navItem1 {
+        margin-right: 40px;
+    }
+
+    .joinUs {
+        margin-right: 40px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .head3 {
+        text-align: end;
+    }
+}
+
+@media screen and (max-width: 1510px) {
+    .eachPic {
+        width: 235px;
+    }
+
+    .allHead {
+        font-size: 2.3rem;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .eachPic {
+        width: 220px;
+    }
+
+    .allHead {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 1390px) {
+    .eachPic {
+        width: 210px;
+    }
+
+    .allHead {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .eachPic {
+        width: 200px;
+    }
+
+    .allHead {
+        font-size: 2.1rem;
+    }
+}
+
+@media screen and (max-width: 1310px) {
+    .eachPic {
+        width: 180px;
+    }
+
+    .allHead {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 1230px) {
+    .eachPic {
+        width: 160px;
+    }
+
+    .allHead {
+        font-size: 1.9rem;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .eachPic {
+        width: 140px;
+    }
+
+    .allHead {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 1070px) {
+
+    .allHead {
+        font-size: 1.6rem;
+        margin-left: 140px;
+    }
+
+    .eachPic {
+        width: 130px;
+        margin: 20px;
+        margin-bottom: 0px;
+        border: 3px solid #FFF;
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity 0.3s;
+        transition: margin 1s;
+    }
+
+    .eachPic:hover {
+        border: 3px solid #902923;
+        opacity: 0.8;
+        margin-bottom: 5px;
+        margin-top: 0px;
+    }
+
+    .allMovies {
+        margin: 120px;
+        margin-top: 50px;
+    }
+
+}
+
+@media screen and (max-width: 970px) {
+    .allMovies {
+        margin-left: 200px;
+    }
+
+    .allHead {
+        font-size: 1.6rem;
+        margin-left: 210px;
+    }
+}
+
+@media screen and (max-width: 910px) {
+    .allMovies {
+        margin-left: 150px;
+    }
+
+    .allHead {
+        font-size: 1.5rem;
+        margin-left: 160px;
+    }
+
+    .eachPic {
+        width: 110px;
+    }
+}
+
+@media screen and (max-width: 755px) {
+    .allMovies {
+        margin-left: 130px;
+    }
+
+    .allHead {
+        font-size: 1.5rem;
+        margin-left: 140px;
+    }
+
+    .eachPic {
+        width: 90px;
+        margin: 10px;
+        transition: margin 1s;
+    }
+}
+
+
+@media screen and (max-width: 726px) {
+    .allHead {
+        width: 400px;
+        text-align: center;
+        margin-left: 150px;
+    }
+
+    .allMovies {
+        margin-left: 170px;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .allHead {
+        width: auto;
+        font-size: 1.3rem;
+        text-align: left;
+        margin-left: 140px;
+    }
+
+    .allMovies {
+        margin-left: 160px;
+    }
+}
+
+@media screen and (max-width: 644px) {
+
+    .allHead {
+        margin-left: 130px;
+        width: 350px;
+        text-align: center;
+    }
+
+    .allMovies {
+        margin-left: 130px;
+    }
+}
+
+@media screen and (max-width: 610px) {
+
+    .allHead {
+        margin-left: 100px;
+    }
+
+    .allMovies {
+        margin-left: 100px;
+
+    }
+
+}
+
+@media screen and (max-width: 580px) {
+
+    .allHead {
+        margin-left: 80px;
+    }
+
+    .allMovies {
+        margin-left: 80px;
+
+    }
+
+}
+
+@media screen and (max-width: 560px) {
+
+    .allHead {
+        margin-top: 50px;
+        margin-left: 60px;
+    }
+
+    .allMovies {
+        margin-left: 100px;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media screen and (max-width: 499px) {
+
+    .allHead {
+        margin-top: 50px;
+        margin-left: 20px;
+        font-size: 1.2rem;
+    }
+
+    .allMovies {
+        margin: 0px;
+        margin-left: 0px;
+    }
+
+    .eachPic {
+        width: 80px;
+    }
+
 }
