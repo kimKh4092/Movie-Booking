@@ -1,10 +1,10 @@
 import './App.css';
 import Intro from './components/intro'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import Explore from './components/explorePage';
+import Explore from './components/home/explorePage';
 import 'font-awesome/css/font-awesome.css'
 import AllMovies from './components/allMovies';
-import MoviePage from './components/moviePage';
+import MoviePage from './components/moviePage/moviePage';
 import NotFound from './components/notFound';
 
 function App() {

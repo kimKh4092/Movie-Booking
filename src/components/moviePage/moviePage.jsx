@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/movie.css'
-import star from '../images/star.png';
-import circle from '../images/circle.png';
-import { addClicked1, removeClicked1, addClicked2, removeClicked2 } from '../utils/manageClass';
+import '../../styles/movie.css';
+import deleteIcon from '../../images/delete.png'
+
+import { addClicked1, removeClicked1, addClicked2, removeClicked2 } from '../../utils/manageClass';
 
 
-import pic4 from '../images/test/4.jpg'
+
 import BookingSection from './bookingSection';
 import Seats from './cinemaSeats';
+import MovieInfo from './movieInfo';
 
 class MoviePage extends Component {
 
     //extract movie id from route parameters 
     //get movie info from services
+
+    //test
     state = {
 
         hours: [
@@ -58,14 +61,19 @@ class MoviePage extends Component {
             }
 
         ],
+        chosenTickets: [
+
+        ],
         dateIndex: 0,
         hourIndex: 0
     }
+
 
     goBack = () => {
         window.location = '/explore'
     }
 
+    //need modification
     dateClicked = (index) => {
         removeClicked1(this.state.dateIndex);
         addClicked1(index);
@@ -75,13 +83,49 @@ class MoviePage extends Component {
         div.classList.add('show');
     }
 
+    //need modification
     hourClicked = (index) => {
         removeClicked2(this.state.hourIndex);
         addClicked2(index);
         this.setState({ hourIndex: index })
-
         let cinema = document.getElementById('cinema');
         cinema.classList.remove('hide')
+    }
+
+    selectSeat = (seat) => {
+        if (seat.reserved) {
+            alert('seat is already taken');
+            return
+        }
+
+        let ticket = document.getElementById(`${seat.seatNumber}seat`);
+        ticket.classList.replace('default', 'selected');
+
+        let tickets = this.state.chosenTickets;
+        if (tickets.includes(seat.seatNumber)) {
+            return
+        }
+        tickets.push(seat.seatNumber);
+        this.setState({ chosenTickets: tickets })
+    }
+
+    deleteSeat = (ticket) => {
+        let deleted = document.getElementById(`${ticket}seat`);
+        deleted.classList.replace('selected', 'default');
+
+        let tickets = this.state.chosenTickets;
+        const index = tickets.indexOf(ticket);
+        tickets.splice(index, index + 1)
+        this.setState({ chosenTickets: tickets })
+
+    }
+
+    totalPrice = () => {
+
+        let tickets = this.state.chosenTickets;
+        let total = tickets.length * 50;
+        return total
+
     }
 
     render() {
@@ -95,24 +139,7 @@ class MoviePage extends Component {
                     </li>
                 </nav>
 
-                <div className='mainSection'>
-                    <div className='info'>
-                        <h1 className='head01'>Decision to leave</h1>
-                        <div className='details'>
-                            <img className='star' src={star} />
-                            <p className='rate'>7.3</p>
-                            <p className='time'>2h 19m</p>
-                            <img className='circle' src={circle} />
-                            <p className='genre'>Cirme, Drama, Mystery</p>
-                        </div>
-                        <p className='director'>Director: <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Park Chan-Wook</span></p>
-                        <p className='plot'>A detective investigating a man's death in the mountains meets the dead man's mysterious wife in the course of his dogged sleuthing.</p>
-                        <button className='buy'>Buy Tickets</button>
-                    </div>
-
-                    <img className='poster' src={pic4}></img>
-                </div>
-
+                <MovieInfo />
 
                 <div className='bookSection'>
                     <h1 className='head02'>Choose The Realm Of Time And Cinema</h1>
@@ -121,11 +148,22 @@ class MoviePage extends Component {
                             dates={this.state.dates}
                             dateClicked={this.dateClicked}
                             hourClicked={this.hourClicked} />
+
                         <div className='hide' id='cinema'>
-                            <Seats />
+                            <Seats select={this.selectSeat} />
                         </div>
                     </div>
-                    <div className='choosenTickets'></div>
+
+                    <h1 className='ticketHead'>Tickets</h1>
+                    <div className='choosenTickets'>
+                        {this.state.chosenTickets.map(ticket =>
+                            <div className='ticketBox'>
+                                <p className='ticketText'>Seat Number {ticket}</p>
+                                <p className='ticketPrice'>50$</p>
+                                <img className='deleteIcon' src={deleteIcon} onClick={() => this.deleteSeat(ticket)} />
+                            </div>)}
+                    </div>
+                    <button className='purchase'>purchase tickets {this.totalPrice()}$</button>
                 </div>
 
 

@@ -132,6 +132,8 @@
 .bookSection {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
 }
 
 
@@ -249,21 +251,24 @@
     width: 50px;
     height: 50px;
     margin: 5px;
+
+    display: inline-block;
+    cursor: pointer;
+}
+
+.default {
     background: #363636;
-    display: inline-block;
-    cursor: pointer;
+
 }
 
-.reservedSeat {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+.reserved {
+
     background: #FFF;
-    display: inline-block;
-    cursor: pointer;
+
 }
 
-.selectedSeat {
+.selected {
+
     background: #A22C29;
 }
 
@@ -301,7 +306,88 @@
     margin: 10px;
 }
 
+.choosenTickets {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
+.ticketHead {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 100px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.ticketBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 500px;
+    height: 50px;
+    margin: 100px;
+    margin-bottom: 50px;
+    margin-top: 0px;
+    border: 6px solid #FFF;
+    background: #B9BAA3;
+}
+
+.ticketText {
+    color: #0A100D;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 20px;
+}
+
+.ticketPrice {
+    color: #A22C29;
+    font-family: Inter;
+    font-size: 2.1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 10px;
+}
+
+.deleteIcon {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background: #FFF;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.10);
+}
+
+.purchase {
+    margin: 30px;
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    align-self: center;
+    width: 500px;
+    height: 50px;
+    border: 5px solid #FFF;
+    background: #A22C29;
+    cursor: pointer;
+}
+
+.purchase:hover {
+    background: #902823d4;
+    border: 4px solid #902823;
+}
 
 @media screen and (max-width:1400px) {
     .head {

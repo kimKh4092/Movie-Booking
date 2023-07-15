@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import seatPic from '../images/seat.png';
-import selectedSeat from '../images/selected.png';
-import reservedSeat from '../images/reserved.png'
+import seatPic from '../../images/seat.png';
+import selectedSeat from '../../images/selected.png';
+import reservedSeat from '../../images/reserved.png'
 
 class Seats extends Component {
 
@@ -27,7 +27,6 @@ class Seats extends Component {
         return seats
     }
 
-
     render() {
         return (
             <div className='cinema'>
@@ -35,17 +34,32 @@ class Seats extends Component {
 
                 <div className='seats'>
                     <div className='section'>
-                        {this.shownSeats().slice(25, 49).map(seat =>
-                            seat.reserved ? <div className='defaultSeat'></div> :
-                                <div className='reservedSeat'></div>)}
+                        {this.shownSeats().slice(0, 24).map(seat =>
+                            !seat.reserved ? <div
+                                id={`${seat.seatNumber}seat`}
+                                onClick={() => this.props.select(seat)}
+                                className='defaultSeat default'>
+                            </div> :
+                                <div
+                                    id={`${seat.seatNumber}seat`}
+                                    onClick={() => this.props.select(seat)}
+                                    className='defaultSeat reserved'>
+                                </div>)}
                     </div>
 
                     <div className='section'>
                         {this.shownSeats().slice(25, 49).map(seat =>
-                            seat.reserved ? <div className='defaultSeat'></div> :
-                                <div className='reservedSeat'></div>)}
+                            !seat.reserved ? <div
+                                id={`${seat.seatNumber}seat`}
+                                onClick={() => this.props.select(seat)}
+                                className='defaultSeat default'>
+                            </div> :
+                                <div
+                                    id={`${seat.seatNumber}seat`}
+                                    onClick={() => this.props.select(seat)}
+                                    className='defaultSeat reserved'>
+                                </div>)}
                     </div>
-
 
                 </div>
                 <div className='guide'>
@@ -64,8 +78,6 @@ class Seats extends Component {
 
                 </div>
             </div>
-
-
         );
     }
 }

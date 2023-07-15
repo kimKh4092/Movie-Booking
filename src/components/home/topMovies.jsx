@@ -1,13 +1,13 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/explore.css'
+import '../../styles/explore.css'
 
 //for test
-import pic1 from '../images/test/1.jpg'
-import pic2 from '../images/test/2.jpg'
-import pic3 from '../images/test/3.jpg'
-import pic4 from '../images/test/4.jpg'
-import pic5 from '../images/test/5.jpg'
+import pic1 from '../../images/test/1.jpg'
+import pic2 from '../../images/test/2.jpg'
+import pic3 from '../../images/test/3.jpg'
+import pic4 from '../../images/test/4.jpg'
+import pic5 from '../../images/test/5.jpg'
 
 const TopMovies = (props) => {
     //get top movies from props

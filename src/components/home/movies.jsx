@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 //for test
-import pic1 from '../images/test/1.jpg'
-import pic2 from '../images/test/2.jpg'
-import pic3 from '../images/test/3.jpg'
-import pic4 from '../images/test/4.jpg'
-import pic5 from '../images/test/5.jpg'
+import pic1 from '../../images/test/1.jpg'
+import pic2 from '../../images/test/2.jpg'
+import pic3 from '../../images/test/3.jpg'
+import pic4 from '../../images/test/4.jpg'
+import pic5 from '../../images/test/5.jpg'
 
 
 class Movies extends Component {

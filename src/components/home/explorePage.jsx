@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Movies from './movies';
-import '../styles/explore.css'
+import '../../styles/explore.css'
 import TopMovies from './topMovies';
 import Schedule from './schedule';
 import { Link } from 'react-router-dom';
-import { addClicked1, removeClicked1 } from '../utils/manageClass';
+import { addClicked1, removeClicked1 } from '../../utils/manageClass';
 
 
 const Explore = () => {
