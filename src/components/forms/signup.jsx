@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Joi from 'joi';
 
 class SignUp extends Component {
     state = {
@@ -10,7 +11,54 @@ class SignUp extends Component {
         }
     }
 
+    schema = {
+        email: Joi.string()
+            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+            .required()
+            .label('email'),
+
+        username: Joi.string()
+            .required()
+            .alphanum()
+            .min(5)
+            .max(15)
+            .label('username'),
+
+        password: Joi.string()
+            .required()
+            .min(8)
+            .max(16)
+            .label('password')
+    }
+
+    handleError = (user) => {
+        const resultEmail = this.schema.email.validate(user.email);
+
+        if (resultEmail.error) {
+            alert(resultEmail.error)
+            return resultEmail.error
+        }
+
+        const resultUsername = this.schema.username.validate(user.username);
+
+        if (resultUsername.error) {
+            alert(resultUsername.error)
+            return resultUsername.error
+        }
+
+        const resultPassword = this.schema.password.validate(user.password)
+
+        if (resultPassword.error) {
+            alert(resultPassword.error)
+            return resultPassword.error
+        }
+    }
+
+
     submit = () => {
+        if (this.handleError(this.state.user)) {
+            return
+        }
         console.log('submitted')
         console.log(this.state.user)
 
@@ -26,16 +74,20 @@ class SignUp extends Component {
             <div className='form'>
                 <input className='formInput'
                     placeholder='Email'
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange}
+                    type='email' />
 
 
                 <input className='formInput'
                     placeholder='Username'
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange}
+                    type='text' />
 
                 <input className='formInput'
                     placeholder='Password'
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange}
+                    type='password' />
+
                 <Link onClick={this.props.showLogin} className='loginLink'>already a member?</Link>
                 <button onClick={this.submit} className='signupButton'>Join</button>
             </div>

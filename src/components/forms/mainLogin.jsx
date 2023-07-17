@@ -14,7 +14,8 @@ class MainLogin extends Component {
                 <nav>
                     <li className='nav'>
                         <ul className='navItem1' >
-                            <Link className='navItem1' to='/explore'> Phantom Screen</Link>
+                            <Link className='navItem1'
+                                to='/explore'> Phantom Screen</Link>
                         </ul>
 
                     </li>
@@ -25,7 +26,8 @@ class MainLogin extends Component {
                         where memories replay and cinematic journeys resume"
                     </p>
                     <p className='ps'>- Unknown movie character.</p>
-                    <Login showSignUp={this.showSignUp} />
+                    <Login setUser={this.props.setCurrentUser}
+                        showSignUp={this.showSignUp} />
                 </div>
 
             </React.Fragment>

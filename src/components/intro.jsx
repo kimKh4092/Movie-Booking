@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import introPic1 from '../images/space_odyssey.jpg';
 import introPic2 from '../images/dfs.jpg';
 import '../styles/intro.css';
@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 import SignUp from './forms/signup';
 import Login from './forms/login';
 
-function Intro() {
+
+function Intro(props) {
+
 
     function handleClick1() {
         window.location = '/explore';
@@ -24,7 +26,7 @@ function Intro() {
     }
 
     function showSignUp() {
-        console.log('show')
+
         const signup = document.getElementById('signup');
         signup.classList.remove('hide');
         const login = document.getElementById('login');
@@ -68,7 +70,10 @@ function Intro() {
 
                     <div className='hide'
                         id='login'>
-                        <Login showSignUp={showSignUp} />
+
+                        <Login setUser={props.setCurrentUser} showSignUp={showSignUp} />
+
+
                     </div>
 
                     <div className='buttons'>

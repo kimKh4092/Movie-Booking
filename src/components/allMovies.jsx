@@ -42,7 +42,7 @@ const AllMovies = () => {
                     </ul>
 
                     <ul className='navItem2'>
-                        <Link to='/'
+                        <Link to='/signup'
                             className='joinUs'>Join us</Link></ul>
                 </li>
             </nav>

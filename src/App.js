@@ -8,22 +8,40 @@ import MoviePage from './components/moviePage/moviePage';
 import NotFound from './components/notFound';
 import MainLogin from './components/forms/mainLogin';
 import MainSignUp from './components/forms/mainSignUp';
+import { createContext, useState } from 'react';
+
+export const UserContext = createContext();
 
 function App() {
 
+  const [user, setUser] = useState();
+
+  function setCurrentUser(user) {
+    console.log('set')
+    setUser(user);
+    console.log(user)
+  }
+
   return (
+
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Intro />} />
-
+        <Route path='/' element={<UserContext.Provider value={user}>
+          <Intro setCurrentUser={setCurrentUser} />
+        </UserContext.Provider>} />
 
         <Route path='/explore' element={<Explore />} />
 
-
         <Route path='/allMovies' element={<AllMovies />} />
 
-        <Route path='/login' element={<MainLogin />} />
+        <Route path='/login' element={<UserContext.Provider>
+          <MainLogin
+            setCurrentUser={setCurrentUser} />
+        </UserContext.Provider>
+
+        } />
         <Route path='/signup' element={<MainSignUp />} />
+
         {/* for test */}
         <Route path='/moviePage' element={<MoviePage />} />
 
@@ -34,6 +52,8 @@ function App() {
         <Route path='/not-found' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+
+
 
 
 

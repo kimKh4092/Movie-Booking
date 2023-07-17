@@ -6,72 +6,47 @@ import Schedule from './schedule';
 import { Link } from 'react-router-dom';
 import { addClicked1, removeClicked1 } from '../../utils/manageClass';
 import { getToday, months, week } from '../../utils/dateData';
-import { getMovies, availableMovies, getTopMovies } from '../../services/movieservice';
+import { getCurrentUser } from '../../services/authservice';
+import {
+    getMovies,
+    getMovieById,
+    getSanses,
+} from "../../services/movieservice";
 
 const Explore = () => {
 
-    const [movies, setMovies] = useState();
-    const [available, setAvailable] = useState();
-    const [topMovies, setTop] = useState();
+    const [movies, setMovies] = useState([]);
+    const [sanses, setSanses] = useState([]);
+    const [availableMovieIds, setAvailableMovieIds] = useState([]);
+    const [available, setAvailable] = useState([]);
 
     const [dateIndex, setIndex] = useState(0);
     const [date, setDate] = useState({});
 
 
-    const fetchMovies = async () => {
-        const records = await getMovies();
-        setMovies(records);
-    }
-
-    const fetchTopMovies = async () => {
-        const top = await getTopMovies();
-        setTop(top);
-    }
-
-    const fetchAvailableMovies = async (today) => {
-        const newAvailable = await availableMovies(today);
-        setAvailable(newAvailable);
-    }
     useEffect(() => {
-        const today = getToday();
-        setDate(today);
-        addClicked1(0);
+        const fetchData = async () => {
+            const today = getToday();
+            setDate(today);
+            addClicked1(0);
 
-        fetchMovies();
-        fetchTopMovies();
-        fetchAvailableMovies(today);
+            const fetchedMovies = await getMovies();
+            setMovies(fetchedMovies);
 
+            const sanses = await getSanses();
+            setSanses(sanses);
+
+            fillingData(fetchedMovies, sanses, today);
+        };
+
+        fetchData();
     }, []);
 
-    const filteredAvailable = (list) => {
-        console.log('filter')
 
-
-        if (!list || !movies) {
-            console.log('null');
-            return
-        }
-
-
-
-        // const newList = list.items.filter((obj, index) => {
-        //     return (
-        //         index === list.items.findIndex((o) => obj.movie === o.movie)
-        //     );
-        // });
-
-        const filteredMovies = [];
-        for (let i = 0; i < list.length; i++) {
-            const id = list[i].id;
-
-            const record = movies.filter((movie) => {
-                return movie.id === 'u6dsxkvjskrd8ng'
-            })
-            filteredMovies.push(record);
-        }
-        console.log(filteredMovies);
-        return filteredMovies;
-    }
+    const fillingData = (moviesData, sansesData, date) => {
+        const dailyMovies = getMovieById(moviesData, sansesData, date);
+        setAvailable(dailyMovies);
+    };
 
     const buttonClicked = async (day, index) => {
         setDate(day);
@@ -80,8 +55,8 @@ const Explore = () => {
         addClicked1(index);
         setIndex(index);
 
-        const newAvailable = await availableMovies(day);
-        setAvailable(newAvailable)
+        const dailyMovies = getMovieById(movies, sanses, day);
+        setAvailable(dailyMovies);
     }
 
     const picClick = () => {
@@ -101,14 +76,11 @@ const Explore = () => {
                 </li>
             </nav>
 
-            <TopMovies picClick={picClick} />
+            <TopMovies topMovies={movies.slice(0, 5)} picClick={picClick} />
 
-            <div className='main'>
+            <div className="main">
                 <Schedule months={months} week={week} buttonClicked={buttonClicked} />
-                <Movies
-                    available={available}
-                    picClick={picClick}
-                    today={date} />
+                <Movies available={available} picClick={picClick} today={date} />
             </div>
         </>
     );
