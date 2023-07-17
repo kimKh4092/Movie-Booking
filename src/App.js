@@ -8,12 +8,16 @@ import MoviePage from './components/moviePage/moviePage';
 import NotFound from './components/notFound';
 
 function App() {
-  return (
 
+  return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Intro />} />
+
+
         <Route path='/explore' element={<Explore />} />
+
+
         <Route path='/allMovies' element={<AllMovies />} />
 
         {/* for test */}
@@ -26,6 +30,9 @@ function App() {
         <Route path='/not-found' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+
+
+
   );
 }
 

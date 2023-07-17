@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-
-//for test
-import pic1 from '../../images/test/1.jpg'
-import pic2 from '../../images/test/2.jpg'
-import pic3 from '../../images/test/3.jpg'
-import pic4 from '../../images/test/4.jpg'
-import pic5 from '../../images/test/5.jpg'
+import { url } from '../../services/movieservice';
 
 
 class Movies extends Component {
+
     //get movies of the day from props
-    state = {
-        movies: [pic1, pic2, pic3, pic4, pic5, pic1, pic2, pic3, pic4, pic5],
+    toArray = () => {
+        const availableArray = [];
+        if (!this.props.available) {
+            return undefined
+        }
+        for (let i = 0; i < this.props.available.length; i++) {
+            availableArray.push(this.props.available[i])
+        }
+        return availableArray;
     }
 
     render() {
@@ -20,10 +22,16 @@ class Movies extends Component {
 
                 <div className='moviesGrid'>
                     <h1 className='dateTitle'>{this.props.today.weekDay} {this.props.today.day} {this.props.today.month}  <span style={{ color: '#D6D5C9' }}>Movies</span>  </h1>
-                    {this.state.movies.map((movie, index) =>
-                        <img onClick={this.props.picClick} src={movie} className='moviePic' key={index} />
-                    )}
+                    {this.toArray() ? this.toArray().map((movie) =>
+                        <img
+                            onClick={this.props.picClick}
+                            src={url + movie.id + "/" + movie.poster}
+                            className='moviePic'
+                            key={movie.id}
+                            alt={movie.title} />
+                    ) : <img />}
                 </div>
+
             </React.Fragment>
 
         );

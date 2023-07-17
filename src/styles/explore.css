@@ -171,11 +171,13 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+
 }
 
 .moviesGrid {
     margin: 80px;
+    margin-top: -25px;
     width: 800px;
 }
 
@@ -256,8 +258,10 @@ body {
 .eachPic:hover {
     border: 6px solid #902923;
     opacity: 0.8;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     margin-top: 0px;
+
+
 }
 
 .allHead {

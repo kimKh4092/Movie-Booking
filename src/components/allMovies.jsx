@@ -1,56 +1,69 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getMovies } from '../services/movieservice';
+import { url } from '../services/movieservice';
 
 
-//for test
-import pic1 from '../images/test/1.jpg'
-import pic2 from '../images/test/2.jpg'
-import pic3 from '../images/test/3.jpg'
-import pic4 from '../images/test/4.jpg'
-import pic5 from '../images/test/5.jpg'
+const AllMovies = () => {
 
-class AllMovies extends Component {
+    const [movies, setMovies] = useState([]);
 
-    //request get to api to get all movies then put them in state
-    state = {
-        movies: [pic1, pic2, pic3, pic4, pic5, pic1, pic2, pic3, pic4, pic5],
-    }
-    picClick = () => {
+    const picClick = () => {
         window.location = '/moviePage'
         // window.location = `/allMovie/${id}`
     }
 
-    goBack = () => {
+    const goBack = () => {
         window.location = '/explore'
     }
 
-    render() {
-        return (
-            <React.Fragment>
-                <nav>
-                    <li className='nav'>
-                        <ul className='navItem1' onClick={this.goBack}>Phantom Screen</ul>
-                        <ul className='navItem2'>
-                            <Link to='/'
-                                className='joinUs'>Join us</Link></ul>
-                    </li>
-                </nav>
-                <h1 className='allHead'>Currenty Showing In The Phantom <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Cinema</span></h1>
-                <div className='allMovies'>
-                    {this.state.movies.map((movie, index) =>
 
-                        <div className='movieContain'>
-                            <img onClick={this.picClick}
-                                src={movie}
-                                className='eachPic'
-                                key={index} />
-                            {/* <p className='overlayTitle'>Decision to leave</p> */}
-                        </div>
-                    )}
-                </div>
-            </React.Fragment>
-        );
+    useEffect(() => {
+        //get all movies
+        (async () => {
+            const records = await getMovies();
+            setMovies(records);
+        })();
+
+    }, [])
+
+
+    const toArray = () => {
+        const movieArray = [];
+        if (!movies) {
+            return []
+        }
+        for (let i = 0; i < movies.length; i++) {
+            movieArray.push(movies[i])
+        }
+        return movieArray;
     }
+
+    return (
+        <React.Fragment>
+            <nav>
+                <li className='nav'>
+                    <ul className='navItem1' onClick={goBack}>Phantom Screen</ul>
+                    <ul className='navItem2'>
+                        <Link to='/'
+                            className='joinUs'>Join us</Link></ul>
+                </li>
+            </nav>
+            <h1 className='allHead'>Currenty Showing In The Phantom <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Cinema</span></h1>
+            <div className='allMovies'>
+                {toArray().map((movie, index) =>
+
+                    <div className='movieContain'>
+                        <img onClick={picClick}
+                            src={url + movie.id + "/" + movie.poster}
+                            className='eachPic'
+                            key={index} />
+                    </div>
+                )}
+            </div>
+        </React.Fragment>
+    );
+
 }
 
 export default AllMovies;
