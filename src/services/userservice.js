@@ -1,11 +1,22 @@
-import http from './httpService'
+import PocketBase from "pocketbase";
+import { readUser } from "./authservice";
 
-export function register(user) {
-    return http.post('url', {
-        //check with backend
-        email: user.username,
+const pb = new PocketBase("http://212.129.63.142:8090");
+
+export async function createUser(user) {
+    const data = {
+        username: user.username,
+        email: user.email,
+        emailVisibility: true,
         password: user.password,
-        name: user.name
-    })
+        passwordConfirm: user.password,
+    };
 
+    try {
+        const record = await pb.collection("users").create(data);
+        console.log("Record created:", record);
+        return record
+    } catch (error) {
+        console.error("Error creating record:", error);
+    }
 }

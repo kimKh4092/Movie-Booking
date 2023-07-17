@@ -1,16 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Joi from 'joi';
 import { readUser } from '../../services/authservice';
-import UserContext from '../../App'; // Import the UserContext
 
-const Login = ({ setUser, showSignUp }) => {
+const Login = ({ showSignUp }) => {
     const [user, setUserState] = useState({
         email: '',
         password: ''
     });
-
-    const currentUser = useContext(UserContext)
 
     const schema = {
         email: Joi.string()
@@ -47,7 +44,6 @@ const Login = ({ setUser, showSignUp }) => {
 
         const userData = await readUser(user);
         console.log('logged in');
-        setUser(userData.record.username);
         window.location = '/explore'
     };
 
@@ -68,7 +64,6 @@ const Login = ({ setUser, showSignUp }) => {
                 onChange={handleChange}
                 type='email'
             />
-
             <input
                 className='formInput'
                 placeholder='Password'

@@ -1,5 +1,4 @@
 import PocketBase from "pocketbase";
-import jwtDecode from 'jwt-decode'
 
 const pb = new PocketBase("http://212.129.63.142:8090");
 
@@ -22,8 +21,7 @@ export async function readUser(user) {
 //get current user
 export function getCurrentUser() {
     try {
-        const jwt = localStorage.getItem('token');
-        return jwtDecode(jwt);
+        return pb.authStore.model.username
     }
     catch (error) {
 

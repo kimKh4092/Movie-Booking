@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SignUp from './signup';
 import { Link } from 'react-router-dom';
+import SignUp from './signup';
 
 class MainSignUp extends Component {
     state = {}
@@ -9,7 +9,6 @@ class MainSignUp extends Component {
     showLogin = () => {
         window.location = '/login'
     }
-
 
     render() {
         return (

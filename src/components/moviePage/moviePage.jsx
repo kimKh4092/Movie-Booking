@@ -5,7 +5,7 @@ import deleteIcon from '../../images/delete.png'
 
 import { addClicked1, removeClicked1, addClicked2, removeClicked2 } from '../../utils/manageClass';
 
-
+import { getCurrentUser } from '../../services/authservice';
 
 import BookingSection from './bookingSection';
 import Seats from './cinemaSeats';
@@ -127,6 +127,19 @@ class MoviePage extends Component {
 
     }
 
+
+    showTickets() {
+        if (getCurrentUser()) {
+            const bookSection = document.getElementById('bookSection');
+            bookSection.classList.remove('hide')
+        }
+        else {
+            window.location = '/signup'
+        }
+
+
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -135,14 +148,16 @@ class MoviePage extends Component {
                         <ul className='navItem1'>
                             <Link className='navItem1' to='/explore'> Phantom Screen</Link>
                         </ul>
-                        <ul className='navItem2'>
-                            <Link to='/' className='joinUs'>Join us</Link></ul>
+                        {!getCurrentUser() ? <ul className='navItem2'>
+                            <Link to='/signup' className='joinUs'>Join us</Link></ul> :
+                            <p className='navItem2'>{getCurrentUser()}</p>}
                     </li>
                 </nav>
 
-                <MovieInfo />
+                <MovieInfo showTickets={this.showTickets} />
 
-                <div className='bookSection'>
+
+                <div id='bookSection' className='bookSection hide'>
                     <h1 className='head02'>Choose The Realm Of Time And Cinema</h1>
                     <div className='ticketSection'>
                         <BookingSection hours={this.state.hours}

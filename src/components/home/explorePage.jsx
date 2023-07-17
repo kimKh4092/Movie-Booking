@@ -40,8 +40,11 @@ const Explore = () => {
         };
 
         fetchData();
-    }, []);
 
+        console.log(getCurrentUser())
+
+
+    }, []);
 
     const fillingData = (moviesData, sansesData, date) => {
         const dailyMovies = getMovieById(moviesData, sansesData, date);
@@ -71,8 +74,10 @@ const Explore = () => {
                     <ul className='navItem1' >
                         <Link className='navItem1' to='/explore'> Phantom Screen</Link>
                     </ul>
-                    <ul className='navItem2'>
-                        <Link to='/signup' className='joinUs'>Join us</Link></ul>
+                    {!getCurrentUser() ? <ul className='navItem2'>
+                        <Link to='/signup' className='joinUs'>Join us</Link></ul> :
+                        <p className='navItem2'>{getCurrentUser()}</p>}
+
                 </li>
             </nav>
 

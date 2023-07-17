@@ -1,7 +1,4 @@
 .mainSection {
-    background-image: url('../images/test/adsa\ 1.png');
-    background-position: top;
-    background-size: 1700px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -127,7 +124,7 @@
     border: 4px solid #902823;
 }
 
-/* hide later */
+
 
 .bookSection {
     display: flex;

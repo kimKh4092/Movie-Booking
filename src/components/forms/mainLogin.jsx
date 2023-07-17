@@ -26,7 +26,7 @@ class MainLogin extends Component {
                         where memories replay and cinematic journeys resume"
                     </p>
                     <p className='ps'>- Unknown movie character.</p>
-                    <Login setUser={this.props.setCurrentUser}
+                    <Login
                         showSignUp={this.showSignUp} />
                 </div>
 

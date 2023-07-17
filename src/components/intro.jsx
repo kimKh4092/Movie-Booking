@@ -1,24 +1,19 @@
-import React, { Component, useEffect } from 'react';
-import introPic1 from '../images/space_odyssey.jpg';
-import introPic2 from '../images/dfs.jpg';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/intro.css';
 import '../styles/form.css'
-import { Link } from 'react-router-dom';
 import SignUp from './forms/signup';
 import Login from './forms/login';
-
+import introPic1 from '../images/space_odyssey.jpg';
+import introPic2 from '../images/dfs.jpg';
 
 function Intro(props) {
-
-
     function handleClick1() {
         window.location = '/explore';
-
     }
 
     function handleClick2() {
         showSignUp()
-
         const explore = document.getElementById('explore');
         explore.classList.replace('explore', 'hide');
         const join = document.getElementById('join');
@@ -26,7 +21,6 @@ function Intro(props) {
     }
 
     function showSignUp() {
-
         const signup = document.getElementById('signup');
         signup.classList.remove('hide');
         const login = document.getElementById('login');
@@ -70,10 +64,7 @@ function Intro(props) {
 
                     <div className='hide'
                         id='login'>
-
-                        <Login setUser={props.setCurrentUser} showSignUp={showSignUp} />
-
-
+                        <Login showSignUp={showSignUp} />
                     </div>
 
                     <div className='buttons'>

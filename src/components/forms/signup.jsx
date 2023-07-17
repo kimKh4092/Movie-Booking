@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Joi from 'joi';
+import { createUser } from '../../services/userservice';
+import { readUser } from '../../services/authservice';
 
 class SignUp extends Component {
     state = {
@@ -54,14 +56,18 @@ class SignUp extends Component {
         }
     }
 
-
-    submit = () => {
+    submit = async () => {
         if (this.handleError(this.state.user)) {
             return
         }
-        console.log('submitted')
-        console.log(this.state.user)
+        const newUser = await createUser(this.state.user);
+        console.log('submitted');
 
+        if (newUser) {
+            readUser(this.state.user);
+            console.log('logged in');
+            window.location = '/explore';
+        }
     }
     handleChange = (e) => {
         const user = this.state.user;

@@ -20,7 +20,7 @@ class MovieInfo extends Component {
                     </div>
                     <p className='director'>Director: <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Park Chan-Wook</span></p>
                     <p className='plot'>A detective investigating a man's death in the mountains meets the dead man's mysterious wife in the course of his dogged sleuthing.</p>
-                    <button className='buy'>Buy Tickets</button>
+                    <button className='buy' onClick={this.props.showTickets}>Buy Tickets</button>
                 </div>
 
                 <img className='poster' src={pic4}></img>
