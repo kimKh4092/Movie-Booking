@@ -6,6 +6,8 @@ import 'font-awesome/css/font-awesome.css'
 import AllMovies from './components/allMovies';
 import MoviePage from './components/moviePage/moviePage';
 import NotFound from './components/notFound';
+import MainLogin from './components/forms/mainLogin';
+import MainSignUp from './components/forms/mainSignUp';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
 
         <Route path='/allMovies' element={<AllMovies />} />
 
+        <Route path='/login' element={<MainLogin />} />
+        <Route path='/signup' element={<MainSignUp />} />
         {/* for test */}
         <Route path='/moviePage' element={<MoviePage />} />
 

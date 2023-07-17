@@ -1,14 +1,46 @@
 import React, { Component } from 'react';
 import introPic1 from '../images/space_odyssey.jpg';
 import introPic2 from '../images/dfs.jpg';
-import '../styles/intro.css'
+import '../styles/intro.css';
+import '../styles/form.css'
 import { Link } from 'react-router-dom';
+import SignUp from './forms/signup';
+import Login from './forms/login';
 
 function Intro() {
 
     function handleClick1() {
         window.location = '/explore';
 
+    }
+
+    function handleClick2() {
+        showSignUp()
+
+        const explore = document.getElementById('explore');
+        explore.classList.replace('explore', 'hide');
+        const join = document.getElementById('join');
+        join.classList.replace('join', 'hide');
+    }
+
+    function showSignUp() {
+        console.log('show')
+        const signup = document.getElementById('signup');
+        signup.classList.remove('hide');
+        const login = document.getElementById('login');
+        login.classList.add('hide');
+    }
+
+    function showLogin() {
+        const login = document.getElementById('login');
+        login.classList.remove('hide');
+
+        const signup = document.getElementById('signup');
+        signup.classList.add('hide');
+    }
+
+    function goback() {
+        window.location = '/';
 
     }
 
@@ -19,7 +51,7 @@ function Intro() {
                 <div className='introContent1'>
                     <img src={introPic1} className='introPic1' />
                     <img src={introPic2} className='introPic2' />
-                    <p className='title'>Phantom Screen</p>
+                    <p onClick={goback} className='title' >Phantom Screen</p>
                 </div>
 
                 <div className='introContent2'>
@@ -29,13 +61,24 @@ function Intro() {
                         <span style={{ color: "#902923" }}>    imagination</span>.
                     </p>
 
-                    <div className='buttons'>
-                        <button className='explore' onClick={handleClick1} >
-                            <Link to='/explore' className='exploreLink'>Explore</Link></button>
-                        <button className='join'>
+                    <div className='hide'
+                        id='signup'>
+                        <SignUp showLogin={showLogin} />
+                    </div>
 
-                            {/* sign up or sign in route */}
-                            <Link to='/' className='joinLink'>Join</Link></button>
+                    <div className='hide'
+                        id='login'>
+                        <Login showSignUp={showSignUp} />
+                    </div>
+
+                    <div className='buttons'>
+                        <button id='explore' className='explore' onClick={handleClick1} >
+                            <Link to='/explore' className='exploreLink'>Explore</Link>
+                        </button>
+
+                        <button id='join' onClick={handleClick2} className='join'>
+                            Join
+                        </button>
                     </div>
                 </div>
             </div>

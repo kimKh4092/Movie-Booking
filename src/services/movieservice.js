@@ -20,7 +20,7 @@ export async function getMovies() {
 //get top movies
 export async function getTopMovies() {
     try {
-        const top = await pb.collection("movie_sans").getList(1, 5,
+        const top = await pb.collection("movies").getList(1, 5,
             { '$autoCancel': false });
         return top
 
@@ -37,8 +37,8 @@ export async function availableMovies(date) {
             '$autoCancel': false
         });
         console.log('available')
-        console.log(resultList);
-        return resultList;
+        console.log(resultList.items);
+        return resultList.items;
 
     } catch (error) {
         console.error("Error getting daily movies", error);

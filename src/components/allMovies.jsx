@@ -13,11 +13,6 @@ const AllMovies = () => {
         // window.location = `/allMovie/${id}`
     }
 
-    const goBack = () => {
-        window.location = '/explore'
-    }
-
-
     useEffect(() => {
         //get all movies
         (async () => {
@@ -26,7 +21,6 @@ const AllMovies = () => {
         })();
 
     }, [])
-
 
     const toArray = () => {
         const movieArray = [];
@@ -43,7 +37,10 @@ const AllMovies = () => {
         <React.Fragment>
             <nav>
                 <li className='nav'>
-                    <ul className='navItem1' onClick={goBack}>Phantom Screen</ul>
+                    <ul className='navItem1'>
+                        <Link className='navItem1' to='/explore'> Phantom Screen</Link>
+                    </ul>
+
                     <ul className='navItem2'>
                         <Link to='/'
                             className='joinUs'>Join us</Link></ul>

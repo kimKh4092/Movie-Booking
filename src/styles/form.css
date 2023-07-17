@@ -1,0 +1,97 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    animation: show;
+    animation-duration: 2s;
+}
+
+.formInput {
+    margin: 10px;
+    width: 450px;
+    height: 40px;
+    border: 5px solid #B9BAA3;
+    background: #D6D5C9;
+
+    color: #0A100D;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.hide {
+    display: none;
+}
+
+
+.signupButton {
+    width: 460px;
+    height: 50px;
+    margin: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 4px solid #FFF;
+    background: #902923;
+    cursor: pointer;
+
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.signupButton:hover {
+    background: #902823d4;
+    border: 4px solid #902823;
+}
+
+.loginLink {
+    color: #902923;
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-decoration: none;
+}
+
+.formBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formIntro {
+    width: 800px;
+    color: #B9BAA3;
+    font-family: Inter;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ps {
+    width: 800px;
+    color: #B9BAA3;
+    font-family: Inter;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

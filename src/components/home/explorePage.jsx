@@ -10,45 +10,49 @@ import { getMovies, availableMovies, getTopMovies } from '../../services/moviese
 
 const Explore = () => {
 
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState();
     const [available, setAvailable] = useState();
     const [topMovies, setTop] = useState();
 
     const [dateIndex, setIndex] = useState(0);
     const [date, setDate] = useState({});
 
+
+    const fetchMovies = async () => {
+        const records = await getMovies();
+        setMovies(records);
+    }
+
+    const fetchTopMovies = async () => {
+        const top = await getTopMovies();
+        setTop(top);
+    }
+
+    const fetchAvailableMovies = async (today) => {
+        const newAvailable = await availableMovies(today);
+        setAvailable(newAvailable);
+    }
     useEffect(() => {
         const today = getToday();
         setDate(today);
         addClicked1(0);
 
-        //get all movies
-        (async () => {
-            const records = await getMovies();
-            setMovies(records);
-        })();
-
-        //get request to get topmovies
-        (async () => {
-            const top = await getTopMovies();
-            setTop(top);
-        })();
-
-        //get request to get the movies of today
-        (async () => {
-            const newAvailable = await availableMovies(today);
-            setAvailable(newAvailable);
-        })();
+        fetchMovies();
+        fetchTopMovies();
+        fetchAvailableMovies(today);
 
     }, []);
 
     const filteredAvailable = (list) => {
         console.log('filter')
 
-        if (!list) {
+
+        if (!list || !movies) {
             console.log('null');
             return
         }
+
+
 
         // const newList = list.items.filter((obj, index) => {
         //     return (
@@ -56,15 +60,18 @@ const Explore = () => {
         //     );
         // });
 
-        // const filteredMovies = [];
-        // for (let i = 0; i < newList.length; i++) {
-        //     const record = movies[i];
-        //     filteredMovies.push(record);
-        // }
+        const filteredMovies = [];
+        for (let i = 0; i < list.length; i++) {
+            const id = list[i].id;
 
-        // return filteredMovies;
+            const record = movies.filter((movie) => {
+                return movie.id === 'u6dsxkvjskrd8ng'
+            })
+            filteredMovies.push(record);
+        }
+        console.log(filteredMovies);
+        return filteredMovies;
     }
-
 
     const buttonClicked = async (day, index) => {
         setDate(day);
@@ -86,10 +93,11 @@ const Explore = () => {
         <>
             <nav>
                 <li className='nav'>
-                    <ul className='navItem1'>Phantom Screen</ul>
+                    <ul className='navItem1' >
+                        <Link className='navItem1' to='/explore'> Phantom Screen</Link>
+                    </ul>
                     <ul className='navItem2'>
-                        {/* sign up or sign in route */}
-                        <Link to='/' className='joinUs'>Join us</Link></ul>
+                        <Link to='/signup' className='joinUs'>Join us</Link></ul>
                 </li>
             </nav>
 

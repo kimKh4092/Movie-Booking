@@ -68,7 +68,6 @@ class MoviePage extends Component {
         hourIndex: 0
     }
 
-
     goBack = () => {
         window.location = '/explore'
     }
@@ -133,7 +132,9 @@ class MoviePage extends Component {
             <React.Fragment>
                 <nav>
                     <li className='nav'>
-                        <ul className='navItem1' onClick={this.goBack}>Phantom Screen</ul>
+                        <ul className='navItem1'>
+                            <Link className='navItem1' to='/explore'> Phantom Screen</Link>
+                        </ul>
                         <ul className='navItem2'>
                             <Link to='/' className='joinUs'>Join us</Link></ul>
                     </li>
