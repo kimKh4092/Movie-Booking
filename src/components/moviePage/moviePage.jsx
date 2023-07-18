@@ -1,30 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 import '../../styles/movie.css';
 import deleteIcon from '../../images/delete.png';
-
-import { addClicked1, removeClicked1, addClicked2, removeClicked2 } from '../../utils/manageClass';
-
-import { getCurrentUser } from '../../services/authservice';
 
 import BookingSection from './bookingSection';
 import Seats from './cinemaSeats';
 import MovieInfo from './movieInfo';
 
-import { getMovieById } from '../../services/movieservice';
-import { useParams } from 'react-router-dom';
+import {
+    addClicked1,
+    removeClicked1,
+    addClicked2,
+    removeClicked2
+} from '../../utils/manageClass';
+import { getMovieById, getMovieSanses, filterDates } from '../../services/movieservice';
+import { getCurrentUser } from '../../services/authservice';
+import { getToday } from '../../utils/dateData';
 
 const MoviePage = () => {
 
     const [movie, setMovie] = useState()
+    const [today, setDay] = useState()
 
     const params = useParams();
 
     useEffect(() => {
+        const today = getToday()
+        setDay(today)
         fetchMovie();
 
     }, []);
-
 
     const fetchMovie = async () => {
         const currentMovie = await getMovieById(params.id);
@@ -32,12 +38,9 @@ const MoviePage = () => {
         console.log(currentMovie);
     }
 
-
     const [Section, setSection] = useState('');
     const movieInfo = useRef(null);
     const bookSection = useRef(null);
-
-
 
     const scrollToSection = (elementRef) => {
 
@@ -58,67 +61,55 @@ const MoviePage = () => {
         }
     }
 
-
     //booksection
-    const hours = [
-        {
-            hour: 4,
-            abriv: 'Pm'
-        },
-        {
-            hour: 6,
-            abriv: 'Pm'
-        },
-        {
-            hour: 8,
-            abriv: 'Pm'
-        },
-        {
-            hour: 10,
-            abriv: 'Pm'
-        }
-    ];
 
-    const dates = [
-        {
-            day: 8,
-            month: 'July',
-            weekDay: 'Friday'
-        },
-        {
-            day: 9,
-            month: 'July',
-            weekDay: 'Saturday'
-        },
-        {
-            day: 10,
-            month: 'July',
-            weekDay: 'Sunday'
-        },
-        {
-            day: 11,
-            month: 'July',
-            weekDay: 'Monday'
-        }
-    ];
-
+    const [movieDates, setDates] = useState()
     const [chosenTickets, setChosenTickets] = useState([]);
     const [dateIndex, setDateIndex] = useState(0);
     const [hourIndex, setHourIndex] = useState(0);
+    const [seats, setSeats] = useState();
+
+    const showTickets = async () => {
+        if (getCurrentUser()) {
+            const bookSection = document.getElementById('bookSection');
+            bookSection.classList.remove('hide');
+            select('bookSection');
+
+            const sanses = await getMovieSanses(movie.id, today);
+            console.log(sanses);
+            setDates(sanses);
+
+        } else {
+            window.location = '/signup';
+        }
+    };
 
     const dateClicked = (index) => {
+
         removeClicked1(dateIndex);
         addClicked1(index);
         setDateIndex(index);
 
         let div = document.getElementById('shownHours');
         div.classList.add('show');
+        for (let item in chosenTickets) {
+            deleteSeat(chosenTickets[item]);
+        }
+        setChosenTickets([])
     };
 
-    const hourClicked = (index) => {
+    const hourClicked = (seats, index) => {
+
         removeClicked2(hourIndex);
         addClicked2(index);
         setHourIndex(index);
+        setSeats(seats);
+
+        for (let item in chosenTickets) {
+            deleteSeat(chosenTickets[item]);
+        }
+        setChosenTickets([]);
+
         let cinema = document.getElementById('cinema');
         cinema.classList.remove('hide');
     };
@@ -132,7 +123,7 @@ const MoviePage = () => {
         let ticket = document.getElementById(`${seat.seatNumber}seat`);
         ticket.classList.replace('default', 'selected');
 
-        let tickets = chosenTickets;
+        let tickets = [...chosenTickets]; // Create a copy of chosenTickets array
         if (tickets.includes(seat.seatNumber)) {
             return;
         }
@@ -141,13 +132,17 @@ const MoviePage = () => {
     };
 
     const deleteSeat = (ticket) => {
+
         let deleted = document.getElementById(`${ticket}seat`);
         deleted.classList.replace('selected', 'default');
 
-        let tickets = chosenTickets;
+        let tickets = [...chosenTickets]; // Create a copy of chosenTickets array
         const index = tickets.indexOf(ticket);
-        tickets.splice(index, index + 1);
-        setChosenTickets(tickets);
+        if (index !== -1) {
+            tickets.splice(index, 1); // Remove the ticket from the array
+            setChosenTickets(tickets);
+
+        }
     };
 
     const totalPrice = () => {
@@ -156,15 +151,6 @@ const MoviePage = () => {
         return total;
     };
 
-    const showTickets = () => {
-        if (getCurrentUser()) {
-            const bookSection = document.getElementById('bookSection');
-            bookSection.classList.remove('hide');
-            select('bookSection')
-        } else {
-            window.location = '/signup';
-        }
-    };
 
     return (
         <React.Fragment>
@@ -192,24 +178,27 @@ const MoviePage = () => {
                 showTickets={showTickets}
             />
 
-
-
             <div ref={bookSection} id='bookSection' className='bookSection hide'>
                 <h1 className='head02'>Choose The Realm Of Time And Cinema</h1>
                 <div className='ticketSection'>
                     <BookingSection
-                        hours={hours}
-                        dates={dates}
+                        movieDates={movieDates}
+                        dateIndex={dateIndex}
                         dateClicked={dateClicked}
                         hourClicked={hourClicked}
                     />
 
                     <div className='hide' id='cinema'>
-                        <Seats select={selectSeat} />
+                        <Seats select={selectSeat}
+                            seats={seats}
+
+                        />
                     </div>
                 </div>
 
-                <h1 className='ticketHead'>Tickets</h1>
+                {chosenTickets.length !== 0 && <h1 className='ticketHead'>Tickets</h1>
+                }
+
                 <div className='choosenTickets'>
                     {chosenTickets.map((ticket) => (
                         <div className='ticketBox'>
@@ -223,7 +212,9 @@ const MoviePage = () => {
                         </div>
                     ))}
                 </div>
-                <button className='purchase'>purchase tickets {totalPrice()}$</button>
+                {chosenTickets.length !== 0 &&
+                    <button className='purchase'>purchase tickets {totalPrice()}$</button>}
+
             </div>
 
 

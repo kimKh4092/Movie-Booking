@@ -22,20 +22,17 @@ export function removeClicked1(index) {
 
 export function addClicked2(index) {
     let button = document.getElementById(`${index}hours`);
-    let abrivText = document.getElementById(`${index}abriv`);
     let numberText = document.getElementById(`${index}number`);
-
     button.classList.add("clicked");
     numberText.classList.add('clickedDate');
-    abrivText.classList.add("clickedDay");
+
 }
 
 export function removeClicked2(index) {
     let button = document.getElementById(`${index}hours`);
-    let abrivText = document.getElementById(`${index}abriv`);
     let numberText = document.getElementById(`${index}number`);
     button.classList.remove("clicked");
     numberText.classList.remove('clickedDate');
-    abrivText.classList.remove("clickedDay");
+
 }
 

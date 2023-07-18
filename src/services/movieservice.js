@@ -1,5 +1,6 @@
 import PocketBase from "pocketbase";
 import AllMovies from "./../components/allMovies";
+import { func } from "joi";
 
 const pb = new PocketBase("http://212.129.63.142:8090");
 
@@ -48,22 +49,15 @@ export async function availableMovies(date) {
 //filter movies to remove duplicate
 export function filterById(AllMovies, movieId, date) {
 
-    const day = `${date.day} ${date.month.toLowerCase()}`;
+    console.log(movieId, AllMovies, date);
 
     if (!Array.isArray(movieId)) {
         console.error("movieId is not an array or is undefined");
         return;
     }
 
-    const uniqueMovies = [];
     // Filter out duplicated objects based on sans.day and unique sans.movie values
-    const filterableMovieIds = movieId.filter((sans) => {
-        if (sans.day === day && !uniqueMovies.includes(sans.movie)) {
-            uniqueMovies.push(sans.movie);
-            return true;
-        }
-        return false;
-    });
+    const filterableMovieIds = movieId.filter((sans) => sans.day === date.day);
 
     console.log(filterableMovieIds);
 
@@ -94,3 +88,29 @@ export async function getMovieById(title) {
         console.log(error)
     }
 }
+
+export async function getMovieSanses(id, today) {
+    try {
+        const records = await pb.collection("movie_sans").getFullList({
+            filter: `movie= "${id}"`
+        });
+        const filtered = filterDates(records, today);
+        return filtered;
+
+
+    } catch (error) {
+        console.error("Error getting movies record:", error);
+    }
+}
+
+export function filterDates(records, today) {
+
+    const dates = []
+    for (let i = 0; i < 5; i++) {
+        if (records[i].day >= today.day) {
+            dates.push(records[i])
+        }
+    }
+    return dates
+}
+

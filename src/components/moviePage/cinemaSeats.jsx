@@ -5,21 +5,29 @@ import reservedSeat from '../../images/reserved.png'
 
 class Seats extends Component {
 
+
+
     //test
     shownSeats = () => {
+
+        const takenSeats = this.props.seats;
         const seats = [];
+        if (!takenSeats) {
+            return seats
+        }
+
         for (let i = 0; i < 49; i++) {
-            if (i % 2 === 0) {
+            if (takenSeats.includes(i + 1)) {
                 let seat = {
                     seatNumber: i + 1,
-                    reserved: false
+                    reserved: true
                 }
                 seats.push(seat)
             }
             else {
                 let seat = {
                     seatNumber: i + 1,
-                    reserved: true
+                    reserved: false
                 }
                 seats.push(seat)
             }
@@ -35,29 +43,34 @@ class Seats extends Component {
                 <div className='seats'>
                     <div className='section'>
                         {this.shownSeats().slice(0, 24).map(seat =>
-                            !seat.reserved ? <div
-                                id={`${seat.seatNumber}seat`}
-                                onClick={() => this.props.select(seat)}
-                                className='defaultSeat default'>
-                            </div> :
+                            !seat.reserved ?
+                                <div
+                                    id={`${seat.seatNumber}seat`}
+                                    onClick={() => this.props.select(seat)}
+                                    className='defaultSeat default'>
+                                    {seat.seatNumber}
+                                </div> :
                                 <div
                                     id={`${seat.seatNumber}seat`}
                                     onClick={() => this.props.select(seat)}
                                     className='defaultSeat reserved'>
+                                    {seat.seatNumber}
                                 </div>)}
                     </div>
 
                     <div className='section'>
-                        {this.shownSeats().slice(25, 49).map(seat =>
+                        {this.shownSeats().slice(24, 48).map(seat =>
                             !seat.reserved ? <div
                                 id={`${seat.seatNumber}seat`}
                                 onClick={() => this.props.select(seat)}
                                 className='defaultSeat default'>
+                                {seat.seatNumber}
                             </div> :
                                 <div
                                     id={`${seat.seatNumber}seat`}
                                     onClick={() => this.props.select(seat)}
                                     className='defaultSeat reserved'>
+                                    {seat.seatNumber}
                                 </div>)}
                     </div>
 
