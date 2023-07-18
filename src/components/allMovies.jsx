@@ -9,9 +9,8 @@ const AllMovies = () => {
 
     const [movies, setMovies] = useState([]);
 
-    const picClick = () => {
-        window.location = '/moviePage'
-        // window.location = `/allMovie/${id}`
+    const picClick = (id) => {
+        window.location = `/allMovies/${id}`
     }
 
     useEffect(() => {
@@ -52,7 +51,7 @@ const AllMovies = () => {
                 {toArray().map((movie, index) =>
 
                     <div className='movieContain'>
-                        <img onClick={picClick}
+                        <img onClick={() => picClick(movie.title)}
                             src={url + movie.id + "/" + movie.poster}
                             className='eachPic'
                             key={index} />

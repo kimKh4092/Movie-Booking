@@ -64,9 +64,12 @@ class SignUp extends Component {
         console.log('submitted');
 
         if (newUser) {
-            readUser(this.state.user);
-            console.log('logged in');
-            window.location = '/explore';
+            const logged = readUser(this.state.user);
+            if (logged) {
+                console.log('logged in');
+                window.location = '/explore';
+            }
+
         }
     }
     handleChange = (e) => {

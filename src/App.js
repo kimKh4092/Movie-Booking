@@ -9,7 +9,7 @@ import MainSignUp from './components/forms/mainSignUp';
 import Explore from './components/home/explorePage';
 import Intro from './components/intro'
 
-function App() {
+function App(props) {
 
   return (
 
@@ -27,11 +27,9 @@ function App() {
         } />
         <Route path='/signup' element={<MainSignUp />} />
 
-        {/* for test */}
-        <Route path='/moviePage' element={<MoviePage />} />
 
         {/* pass props for each movie */}
-        {/* <Route path='/allmovies/:id' element={<MoviePage />}/> */}
+        <Route path='/allMovies/:id' element={<MoviePage />} />
 
         <Route path='*' element={<Navigate to='/not-found' />} />
         <Route path='/not-found' element={<NotFound />} />

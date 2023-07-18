@@ -44,9 +44,10 @@ export async function availableMovies(date) {
     }
 }
 
-//get a movie by id
-export function getMovieById(AllMovies, movieId, date) {
-    console.log(movieId, AllMovies, date);
+
+//filter movies to remove duplicate
+export function filterById(AllMovies, movieId, date) {
+
     const day = `${date.day} ${date.month.toLowerCase()}`;
 
     if (!Array.isArray(movieId)) {
@@ -80,5 +81,16 @@ export async function getSanses() {
         return records;
     } catch (error) {
         console.error("Error getting movies record:", error);
+    }
+}
+
+export async function getMovieById(title) {
+    try {
+        const record = await pb.collection('movies')
+            .getFirstListItem(`title="${title}"`, { $autoCancel: false });
+        return record;
+    }
+    catch (error) {
+        console.log(error)
     }
 }

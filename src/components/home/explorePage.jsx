@@ -9,7 +9,7 @@ import { getToday, months, week } from '../../utils/dateData';
 import { getCurrentUser } from '../../services/authservice';
 import {
     getMovies,
-    getMovieById,
+    filterById,
     getSanses,
 } from "../../services/movieservice";
 
@@ -17,12 +17,10 @@ const Explore = () => {
 
     const [movies, setMovies] = useState([]);
     const [sanses, setSanses] = useState([]);
-    const [availableMovieIds, setAvailableMovieIds] = useState([]);
     const [available, setAvailable] = useState([]);
 
     const [dateIndex, setIndex] = useState(0);
     const [date, setDate] = useState({});
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -47,7 +45,7 @@ const Explore = () => {
     }, []);
 
     const fillingData = (moviesData, sansesData, date) => {
-        const dailyMovies = getMovieById(moviesData, sansesData, date);
+        const dailyMovies = filterById(moviesData, sansesData, date);
         setAvailable(dailyMovies);
     };
 
@@ -58,13 +56,12 @@ const Explore = () => {
         addClicked1(index);
         setIndex(index);
 
-        const dailyMovies = getMovieById(movies, sanses, day);
+        const dailyMovies = filterById(movies, sanses, day);
         setAvailable(dailyMovies);
     }
 
-    const picClick = () => {
-        window.location = '/moviePage'
-        // window.location = `/allMovie/${id}`
+    const picClick = (id) => {
+        window.location = `/allMovies/${id}`
     }
 
     return (
@@ -81,7 +78,7 @@ const Explore = () => {
                 </li>
             </nav>
 
-            <TopMovies topMovies={movies.slice(0, 5)} picClick={picClick} />
+            <TopMovies topMovies={movies.slice(0, 5)} />
 
             <div className="main">
                 <Schedule months={months} week={week} buttonClicked={buttonClicked} />

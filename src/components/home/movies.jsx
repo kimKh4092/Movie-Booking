@@ -24,7 +24,7 @@ class Movies extends Component {
                     <h1 className='dateTitle'>{this.props.today.weekDay} {this.props.today.day} {this.props.today.month}  <span style={{ color: '#D6D5C9' }}>Movies</span>  </h1>
                     {this.toArray() ? this.toArray().map((movie) =>
                         <img
-                            onClick={this.props.picClick}
+                            onClick={() => this.props.picClick(movie.title)}
                             src={url + movie.id + "/" + movie.poster}
                             className='moviePic'
                             key={movie.id}

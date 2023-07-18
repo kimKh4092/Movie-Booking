@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import star from '../../images/star.png';
 import circle from '../../images/circle.png';
-
-import pic4 from '../../images/test/4.jpg'
+import { url } from '../../services/movieservice';
 
 class MovieInfo extends Component {
     state = {}
     render() {
         return (
-            <div className='mainSection'>
-                <div className='info'>
-                    <h1 className='head01'>Decision to leave</h1>
-                    <div className='details'>
-                        <img className='star' src={star} />
-                        <p className='rate'>7.3</p>
-                        <p className='time'>2h 19m</p>
-                        <img className='circle' src={circle} />
-                        <p className='genre'>Cirme, Drama, Mystery</p>
+            <React.Fragment>
+                {this.props.currentMovie && <div className='mainSection'>
+                    <div className='info'>
+                        <h1 className='head01'>{this.props.currentMovie.title}</h1>
+                        <div className='details'>
+                            <img className='star' src={star} />
+                            <p className='rate'>{this.props.currentMovie.rate}</p>
+                            <p className='time'>{this.props.currentMovie.duration}</p>
+                            <img className='circle' src={circle} />
+                            <p className='genre'>{this.props.currentMovie.generes}</p>
+                        </div>
+                        <p className='director'>Director: <span style={{ color: 'rgba(162, 44, 41, 1)' }}>{this.props.currentMovie.director}</span></p>
+                        <p className='plot'>{this.props.currentMovie.description}</p>
+                        <button className='buy' onClick={this.props.showTickets}>Buy Tickets</button>
                     </div>
-                    <p className='director'>Director: <span style={{ color: 'rgba(162, 44, 41, 1)' }}>Park Chan-Wook</span></p>
-                    <p className='plot'>A detective investigating a man's death in the mountains meets the dead man's mysterious wife in the course of his dogged sleuthing.</p>
-                    <button className='buy' onClick={this.props.showTickets}>Buy Tickets</button>
-                </div>
 
-                <img className='poster' src={pic4}></img>
-            </div>
+                    <img className='poster'
+                        src={url + this.props.currentMovie.id + "/" + this.props.currentMovie.poster}></img>
+                </div>}
+
+            </React.Fragment>
+
+
         );
     }
 }

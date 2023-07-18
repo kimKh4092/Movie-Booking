@@ -77,7 +77,7 @@ const TopMovies = (props) => {
                     if (movie && movie.id) {
                         return (
                             <img
-                                onClick={picClick}
+
                                 src={`${url}${movie.id}/${movie.poster}`}
                                 className="pic smooth"
                                 key={index}
