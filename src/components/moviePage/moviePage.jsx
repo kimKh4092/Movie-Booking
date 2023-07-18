@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/movie.css';
 import deleteIcon from '../../images/delete.png';
@@ -31,6 +31,33 @@ const MoviePage = () => {
         setMovie(currentMovie);
         console.log(currentMovie);
     }
+
+
+    const [Section, setSection] = useState('');
+    const movieInfo = useRef(null);
+    const bookSection = useRef(null);
+
+
+
+    const scrollToSection = (elementRef) => {
+
+        window.scrollTo({
+            top: elementRef.current.offsetTop,
+            behavior: 'smooth'
+        })
+    }
+
+    const select = (selected) => {
+        setSection(selected);
+
+        if (selected === 'movieInfor') {
+            scrollToSection(movieInfo, selected)
+        }
+        if (selected === 'bookSection') {
+            scrollToSection(bookSection, selected)
+        }
+    }
+
 
     //booksection
     const hours = [
@@ -133,6 +160,7 @@ const MoviePage = () => {
         if (getCurrentUser()) {
             const bookSection = document.getElementById('bookSection');
             bookSection.classList.remove('hide');
+            select('bookSection')
         } else {
             window.location = '/signup';
         }
@@ -159,11 +187,14 @@ const MoviePage = () => {
                 </li>
             </nav>
 
-            <MovieInfo currentMovie={movie} showTickets={showTickets} />
+            <MovieInfo ref={movieInfo}
+                currentMovie={movie}
+                showTickets={showTickets}
+            />
 
 
 
-            <div id='bookSection' className='bookSection hide'>
+            <div ref={bookSection} id='bookSection' className='bookSection hide'>
                 <h1 className='head02'>Choose The Realm Of Time And Cinema</h1>
                 <div className='ticketSection'>
                     <BookingSection
@@ -194,6 +225,8 @@ const MoviePage = () => {
                 </div>
                 <button className='purchase'>purchase tickets {totalPrice()}$</button>
             </div>
+
+
         </React.Fragment>
     );
 };

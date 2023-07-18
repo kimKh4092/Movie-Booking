@@ -15,7 +15,6 @@ export async function readUser(user) {
     } catch (error) {
         console.error("Error authenticating:", error);
     }
-
 }
 
 //get current user

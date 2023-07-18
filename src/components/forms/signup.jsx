@@ -60,12 +60,15 @@ class SignUp extends Component {
         if (this.handleError(this.state.user)) {
             return
         }
+
         const newUser = await createUser(this.state.user);
         console.log('submitted');
 
         if (newUser) {
-            const logged = readUser(this.state.user);
+            console.log(newUser)
+            const logged = await readUser(this.state.user);
             if (logged) {
+
                 console.log('logged in');
                 window.location = '/explore';
             }

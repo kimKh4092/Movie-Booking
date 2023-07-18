@@ -1,5 +1,4 @@
 import PocketBase from "pocketbase";
-import { readUser } from "./authservice";
 
 const pb = new PocketBase("http://212.129.63.142:8090");
 

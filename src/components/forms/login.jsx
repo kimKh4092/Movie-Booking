@@ -42,7 +42,7 @@ const Login = ({ showSignUp }) => {
             return;
         }
 
-        const userData = await readUser(user);
+        await readUser(user);
         console.log('logged in');
         window.location = '/explore'
     };

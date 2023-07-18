@@ -50,9 +50,10 @@
 }
 
 .loginLink {
+    margin: 10px;
     color: #902923;
     font-family: Inter;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
