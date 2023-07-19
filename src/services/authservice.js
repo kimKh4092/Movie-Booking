@@ -9,11 +9,11 @@ export async function readUser(user) {
         const userData = await pb
             .collection("users")
             .authWithPassword(user.email, user.password);
-        console.log("Result from auth:", userData);
+        // console.log("Result from auth:", userData);
         return userData;
 
     } catch (error) {
-        console.error("Error authenticating:", error);
+        // console.error("Error authenticating:", error);
     }
 }
 
@@ -25,4 +25,8 @@ export function getCurrentUser() {
     catch (error) {
 
     }
+}
+
+export function logout() {
+    pb.authStore.clear();
 }

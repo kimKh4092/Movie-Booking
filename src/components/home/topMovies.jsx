@@ -20,13 +20,13 @@ const TopMovies = (props) => {
         return shown;
     };
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         goToNextSlide();
-    //     }, 3000);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            goToNextSlide();
+        }, 3000);
 
-    //     return () => clearInterval(interval);
-    // }, []);
+        return () => clearInterval(interval);
+    }, []);
 
     const goToPreviousSlide = () => {
         setStartIndex((prevIndex) =>
@@ -44,8 +44,7 @@ const TopMovies = (props) => {
         <>
             <h2 className="head2">Top Movies</h2>
             <div className="topMovies">
-                <i
-                    onClick={goToNextSlide}
+                <i onClick={goToNextSlide}
                     className="fa fa-arrow-circle-left white fa-4x"
                     aria-hidden="true"
                 ></i>
@@ -65,8 +64,7 @@ const TopMovies = (props) => {
                     return null;
                 })}
 
-                <i
-                    onClick={goToPreviousSlide}
+                <i onClick={goToPreviousSlide}
                     className="fa fa-arrow-circle-right white fa-4x"
                     aria-hidden="true"
                 ></i>
@@ -77,7 +75,6 @@ const TopMovies = (props) => {
                     if (movie && movie.id) {
                         return (
                             <img
-
                                 src={`${url}${movie.id}/${movie.poster}`}
                                 className="pic smooth"
                                 key={index}
@@ -90,13 +87,13 @@ const TopMovies = (props) => {
             </div>
 
             <h3 className="head3">
-                <Link to="/allMovies" className="link3">
+                <Link to="/allMovies"
+                    className="link3">
                     All movies
                 </Link>
             </h3>
         </>
     );
-
 };
 
 export default TopMovies;

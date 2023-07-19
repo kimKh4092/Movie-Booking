@@ -5,17 +5,12 @@ import reservedSeat from '../../images/reserved.png'
 
 class Seats extends Component {
 
-
-
-    //test
     shownSeats = () => {
-
         const takenSeats = this.props.seats;
         const seats = [];
         if (!takenSeats) {
             return seats
         }
-
         for (let i = 0; i < 49; i++) {
             if (takenSeats.includes(i + 1)) {
                 let seat = {
@@ -38,19 +33,20 @@ class Seats extends Component {
     render() {
         return (
             <div className='cinema'>
-                <div className='front'></div>
 
                 <div className='seats'>
                     <div className='section'>
                         {this.shownSeats().slice(0, 24).map(seat =>
                             !seat.reserved ?
                                 <div
+                                    key={seat.seatNumber}
                                     id={`${seat.seatNumber}seat`}
                                     onClick={() => this.props.select(seat)}
                                     className='defaultSeat default'>
                                     {seat.seatNumber}
                                 </div> :
                                 <div
+                                    key={seat.seatNumber}
                                     id={`${seat.seatNumber}seat`}
                                     onClick={() => this.props.select(seat)}
                                     className='defaultSeat reserved'>
@@ -61,12 +57,14 @@ class Seats extends Component {
                     <div className='section'>
                         {this.shownSeats().slice(24, 48).map(seat =>
                             !seat.reserved ? <div
+                                key={seat.seatNumber}
                                 id={`${seat.seatNumber}seat`}
                                 onClick={() => this.props.select(seat)}
                                 className='defaultSeat default'>
                                 {seat.seatNumber}
                             </div> :
                                 <div
+                                    key={seat.seatNumber}
                                     id={`${seat.seatNumber}seat`}
                                     onClick={() => this.props.select(seat)}
                                     className='defaultSeat reserved'>

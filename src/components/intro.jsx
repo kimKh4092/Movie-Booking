@@ -7,7 +7,7 @@ import Login from './forms/login';
 import introPic1 from '../images/space_odyssey.jpg';
 import introPic2 from '../images/dfs.jpg';
 
-function Intro(props) {
+function Intro() {
     function handleClick1() {
         window.location = '/explore';
     }

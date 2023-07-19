@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Movies from './movies';
+import { Link } from 'react-router-dom';
 import '../../styles/explore.css'
 import TopMovies from './topMovies';
 import Schedule from './schedule';
-import { Link } from 'react-router-dom';
-import { addClicked1, removeClicked1 } from '../../utils/manageClass';
-import { getToday, months, week } from '../../utils/dateData';
+import Movies from './movies';
+import {
+    addClicked1,
+    removeClicked1
+} from '../../utils/manageClass';
+import {
+    getToday,
+    months,
+    week
+} from '../../utils/dateData';
 import { getCurrentUser } from '../../services/authservice';
 import {
     getMovies,
@@ -38,10 +45,6 @@ const Explore = () => {
         };
 
         fetchData();
-
-        console.log(getCurrentUser())
-
-
     }, []);
 
     const fillingData = (moviesData, sansesData, date) => {
@@ -69,20 +72,27 @@ const Explore = () => {
             <nav>
                 <li className='nav'>
                     <ul className='navItem1' >
-                        <Link className='navItem1' to='/explore'> Phantom Screen</Link>
+                        <Link className='navItem1'
+                            to='/explore'> Phantom Screen</Link>
                     </ul>
                     {!getCurrentUser() ? <ul className='navItem2'>
-                        <Link to='/signup' className='joinUs'>Join us</Link></ul> :
-                        <p className='navItem2'>{getCurrentUser()}</p>}
-
+                        <Link to='/signup'
+                            className='joinUs'>Join us</Link></ul> :
+                        <Link to='/profile'
+                            className='joinUs'>
+                            <p className='navItem2'>{getCurrentUser()}</p></Link>}
                 </li>
             </nav>
 
             <TopMovies topMovies={movies.slice(0, 5)} />
 
             <div className="main">
-                <Schedule months={months} week={week} buttonClicked={buttonClicked} />
-                <Movies available={available} picClick={picClick} today={date} />
+                <Schedule months={months}
+                    week={week}
+                    buttonClicked={buttonClicked} />
+                <Movies available={available}
+                    picClick={picClick}
+                    today={date} />
             </div>
         </>
     );

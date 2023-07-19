@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Login from './login';
 import { Link } from 'react-router-dom';
+import Login from './login';
 
 class MainLogin extends Component {
-    state = {}
+
     showSignUp = () => {
         window.location = '/signup'
     }
@@ -17,11 +17,11 @@ class MainLogin extends Component {
                             <Link className='navItem1'
                                 to='/explore'> Phantom Screen</Link>
                         </ul>
-
                     </li>
                 </nav>
                 <div className='formBox'>
-                    <p className='formIntro'>"Like a familiar face returning to the spotlight,
+                    <p className='formIntro'>
+                        "Like a familiar face returning to the spotlight,
                         you step back into the embrace of <span style={{ color: '#902923' }}> Phantom Screens</span>,
                         where memories replay and cinematic journeys resume"
                     </p>

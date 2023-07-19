@@ -12,11 +12,9 @@ export async function getMovies() {
         const records = await pb
             .collection("movies")
             .getFullList({}, { $autoCancel: false });
-        console.log("movies");
-        console.log(records);
         return records;
     } catch (error) {
-        console.error("Error getting movies record:", error);
+        // console.error("Error getting movies record:", error);
     }
 }
 
@@ -28,7 +26,7 @@ export async function getTopMovies() {
             .getList(1, 5, { $autoCancel: false });
         return top;
     } catch (error) {
-        console.error("Error getting topMovies record:", error);
+        // console.error("Error getting topMovies record:", error);
     }
 }
 
@@ -41,7 +39,7 @@ export async function availableMovies(date) {
         });
         return resultList.items;
     } catch (error) {
-        console.error("Error getting daily movies", error);
+        // console.error("Error getting daily movies", error);
     }
 }
 
@@ -49,17 +47,12 @@ export async function availableMovies(date) {
 //filter movies to remove duplicate
 export function filterById(AllMovies, movieId, date) {
 
-    console.log(movieId, AllMovies, date);
-
     if (!Array.isArray(movieId)) {
-        console.error("movieId is not an array or is undefined");
         return;
     }
 
     // Filter out duplicated objects based on sans.day and unique sans.movie values
     const filterableMovieIds = movieId.filter((sans) => sans.day === date.day);
-
-    console.log(filterableMovieIds);
 
     // Example: Access the movie details based on the filtered IDs
     const matchedMovies = AllMovies.filter((movie) =>
@@ -74,7 +67,7 @@ export async function getSanses() {
         const records = await pb.collection("movie_sans").getFullList({}, {});
         return records;
     } catch (error) {
-        console.error("Error getting movies record:", error);
+        // console.error("Error getting movies record:", error);
     }
 }
 
@@ -85,7 +78,7 @@ export async function getMovieById(title) {
         return record;
     }
     catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
@@ -96,15 +89,12 @@ export async function getMovieSanses(id, today) {
         });
         const filtered = filterDates(records, today);
         return filtered;
-
-
     } catch (error) {
-        console.error("Error getting movies record:", error);
+        // console.error("Error getting movies record:", error);
     }
 }
 
 export function filterDates(records, today) {
-
     const dates = []
     for (let i = 0; i < 5; i++) {
         if (records[i].day >= today.day) {

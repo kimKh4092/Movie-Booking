@@ -327,6 +327,48 @@
     margin-bottom: 50px;
 }
 
+.ticketInfo {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 100px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    align-self: flex-start;
+
+}
+
+.successTitle {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 50px;
+}
+
+.profileTitle {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .ticketBox {
     display: flex;
     flex-direction: row;
@@ -387,9 +429,42 @@
     cursor: pointer;
 }
 
+.history {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.historyTitle {
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    align-self: flex-start;
+}
+
 .purchase:hover {
     background: #902823d4;
     border: 4px solid #902823;
+}
+
+.qoute {
+    color: #B9BAA3;
+    text-align: center;
+    font-family: Inter;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width:1400px) {

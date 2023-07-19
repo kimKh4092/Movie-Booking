@@ -26,13 +26,18 @@ const Schedule = (props) => {
         <div className='schedule'>
             <div className='calendar'>
                 {convertDate().map((day, index) =>
-                    <button id={index} key={index} onClick={() => props.buttonClicked(day, index)} className='calendarBox '>
-                        <p id={`${index}date`} className='date'>{day.day}</p>
+                    <button id={index}
+                        key={index}
+                        onClick={() => props.buttonClicked(day, index)}
+                        className='calendarBox '>
+                        <p id={`${index}date`}
+                            className='date'>{day.day}</p>
                         <div className='days'>
-                            <p id={`${index}day1`} className='day '>{day.month}</p>
-                            <p id={`${index}day2`} className='day '>{day.weekDay}</p>
+                            <p id={`${index}day1`}
+                                className='day '>{day.month}</p>
+                            <p id={`${index}day2`}
+                                className='day '>{day.weekDay}</p>
                         </div>
-
                     </button>
                 )}
             </div>
