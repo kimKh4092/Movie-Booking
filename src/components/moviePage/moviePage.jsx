@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import '../../styles/movie.css';
-import deleteIcon from '../../images/delete.png';
-import BookingSection from './bookingSection';
-import Seats from './cinemaSeats';
 import MovieInfo from './movieInfo';
+import BookPage from './bookPage';
 import {
     addClicked1,
     removeClicked1,
@@ -18,6 +16,7 @@ import {
 } from '../../services/movieservice';
 import { getCurrentUser } from '../../services/authservice';
 import { getToday } from '../../utils/dateData';
+
 
 const MoviePage = () => {
 
@@ -43,6 +42,7 @@ const MoviePage = () => {
     const bookSection = useRef(null);
 
     const scrollToSection = (elementRef) => {
+        console.log(elementRef)
         window.scrollTo({
             top: elementRef.current.offsetTop,
             behavior: 'smooth'
@@ -52,12 +52,8 @@ const MoviePage = () => {
     const select = (selected) => {
         setSection(selected);
 
-        if (selected === 'movieInfor') {
-            scrollToSection(movieInfo, selected)
-        }
-        if (selected === 'bookSection') {
-            scrollToSection(bookSection, selected)
-        }
+        scrollToSection(bookSection);
+
     }
 
     //booksection
@@ -72,10 +68,15 @@ const MoviePage = () => {
         if (getCurrentUser()) {
             const bookSection = document.getElementById('bookSection');
             bookSection.classList.remove('hide');
-            select('bookSection');
+
+
 
             const sanses = await getMovieSanses(movie.id, today);
             setDates(sanses);
+
+            select('bookSection');
+
+
 
         } else {
             window.location = '/signup';
@@ -178,47 +179,24 @@ const MoviePage = () => {
                 </li>
             </nav>
 
-            <MovieInfo ref={movieInfo}
+            <MovieInfo
                 currentMovie={movie}
                 showTickets={showTickets}
             />
 
-            <div ref={bookSection}
-                id='bookSection'
-                className='bookSection hide'>
-                <h1 className='head02'>Choose The Realm Of Time And Cinema</h1>
-                <div className='ticketSection'>
-                    <BookingSection
-                        movieDates={movieDates}
-                        dateIndex={dateIndex}
-                        dateClicked={dateClicked}
-                        hourClicked={hourClicked}
-                    />
-                    <div className='hide' id='cinema'>
-                        <Seats select={selectSeat}
-                            seats={seats}
-                        />
-                    </div>
-                </div>
-
-                {chosenTickets.length !== 0 && <h1 className='ticketHead'>Tickets</h1>}
-
-                <div className='choosenTickets'>
-                    {chosenTickets.map((ticket) => (
-                        <div key={ticket} className='ticketBox'>
-                            <p className='ticketText'>Seat Number {ticket}</p>
-                            <p className='ticketPrice'>50$</p>
-                            <img
-                                className='deleteIcon'
-                                src={deleteIcon}
-                                onClick={() => deleteSeat(ticket)}
-                            />
-                        </div>
-                    ))}
-                </div>
-                {chosenTickets.length !== 0 &&
-                    <button onClick={submit}
-                        className='purchase'>purchase tickets {totalPrice()}$</button>}
+            <div ref={bookSection}>
+                <BookPage
+                    movieDates={movieDates}
+                    dateIndex={dateIndex}
+                    dateClicked={dateClicked}
+                    hourClicked={hourClicked}
+                    select={selectSeat}
+                    seats={seats}
+                    chosenTickets={chosenTickets}
+                    submit={submit}
+                    deleteSeat={deleteSeat}
+                    totalPrice={totalPrice}
+                />
             </div>
         </React.Fragment>
     );

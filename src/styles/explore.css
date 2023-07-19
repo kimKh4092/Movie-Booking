@@ -35,6 +35,24 @@ body {
     cursor: pointer;
 }
 
+.navItem3 {
+    text-align: center;
+    margin: 20px;
+    margin-top: 5px;
+    margin-right: 30px;
+    color: #B9BAA3;
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.navItem3:hover {
+    color: #902923;
+}
+
 .joinUs {
     color: #A22C29;
     font-family: Inter;

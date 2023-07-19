@@ -412,26 +412,14 @@
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.10);
 }
 
-.purchase {
-    margin: 30px;
-    color: #D6D5C9;
-    font-family: Inter;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-
-    align-self: center;
-    width: 500px;
-    height: 50px;
-    border: 5px solid #FFF;
-    background: #A22C29;
-    cursor: pointer;
-}
-
 .history {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.historyCalendar {
+    display: flex;
+    flex-direction: row;
 
 }
 
@@ -447,9 +435,64 @@
     align-self: flex-start;
 }
 
+.ticketTimes {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticketTime {
+    color: #902823;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 110px;
+    margin-bottom: 50px;
+
+}
+
+.historyTicket {
+    display: flex;
+    flex-direction: column;
+}
+
+.historyPoster {
+    width: 250px;
+    margin: 30px;
+    margin-top: 100px;
+}
+
+.purchase {
+    margin: 30px;
+    margin-top: 100px;
+    color: #D6D5C9;
+    font-family: Inter;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    align-self: center;
+    width: 500px;
+    height: 50px;
+    border: 5px solid #FFF;
+    background: #A22C29;
+    cursor: pointer;
+}
+
+
+
+
 .purchase:hover {
     background: #902823d4;
     border: 4px solid #902823;
+}
+
+
+.userOptions {
+    display: flex;
+    flex-direction: column;
 }
 
 .qoute {
