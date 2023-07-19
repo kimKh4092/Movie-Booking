@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+<p align="center">
+    <a href="http://212.129.63.142:3000" target="_blank" rel="noopener">
+        <img src="intro.png" alt="" />
+    </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Phantom Screan](http://212.129.63.142:3000) is a web application that provides a movie booking system
+for the phantom theater.
+The application allows users to explore currently showing movies in the theater,
+view detailed information about each movie, purchase tickets,
+and manage their bookings. With its cinematic-inspired design .
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User authentication:** Sign up and login functionalities for users to create accounts and access personalized features.
+- **Movie exploration:** Browse through a collection of movies. (also for guest users)
+- **Top movies slide show:** Showcase a selection of top movies of theater in a visually appealing slideshow.
+- **Movie schedule:** Select a specific date to see the available movies for that day.features.
+- **Movie details:** View information about a movie, including its title, genre, duration , rating , description and director's name.(also for guest users)
+- **Ticket booking:** Choose a movie, date, and time, select desired seats, and purchase tickets.
+- **Tickets history:** View The history of tickets purchased by the user
 
-### `npm start`
+### Installation and Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To set up the Phantom Screen project locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+0. Make sure you have installed node.js on your machine
 
-### `npm test`
+1. Clone the project repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+git clone git@github.com:kimKh4092/Movie-Booking.git
+```
 
-### `npm run build`
+2. Install the required dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. start the project using
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+npm start
+```
 
-### `npm run eject`
+4. you can now see the application running on your localhost port 3000
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+localhost:3000
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **src:** Contains the main source code of the application.
+  - **components:** Includes reusable React components used throughout the application devided by each page ,also the parent components for the pages.
+  - **pages:** Contains the main source code of the application.
+  - **images:** Stores images and assets used in the application.
+  - **styles:** Contains CSS files and styling related to the application's visual elements.
+  - **utils:** Includes utility functions and helper modules used across the project.
+  - **services:** Contains services used in the project , such as functions to call api point for each section
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Technologies Used
 
-## Learn More
+- **[React:](https://github.com/facebook/react)** A JavaScript library for building user interfaces.
+- **[PocketBase:](https://github.com/pocketbase/pocketbase)** An Open Source backend-as-a-service platform used for backend and database with provicded api endpoints.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### User Interface
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I aimed to create a visually appealing user interface, drawing inspiration from the world of cinema. Although there is still room for improvement, my focus was on designing an engaging and beautiful interface that captures the atmosphere of the silver screen. My goal was to provide users with a unique and enjoyable browsing experience, evoking the feeling of being in a movie theater.
 
-### Code Splitting
+> ⚠️ Please note that the website may not appear as intended on responsive pages.
+> I apologize for any inconvenience caused. This limitation is a result of the project's time constraints and
+> deadline. Additionally, there might be some latency issues due to the slow server. We appreciate your
+> understanding in this matter.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_The name of the website is a tribute to the movie [Phantom of the Paradise](https://www.imdb.com/title/tt0071994/) directed by brian de palma . _
