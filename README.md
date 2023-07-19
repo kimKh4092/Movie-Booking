@@ -74,4 +74,4 @@ I aimed to create a visually appealing user interface, drawing inspiration from 
 > deadline. Additionally, there might be some latency issues due to the slow server. We appreciate your
 > understanding in this matter.
 
-_The name of the website is a tribute to the movie [Phantom of the Paradise](https://www.imdb.com/title/tt0071994/) directed by brian de palma . _
+_The name of the website is a tribute to the movie [Phantom of the Paradise](https://www.imdb.com/title/tt0071994/) directed by brian de palma._
